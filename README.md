@@ -1,5 +1,6 @@
 # fortaleza_cross
-🏋️‍♂️ Sistema de Gestión para Gimnasio – Fortaleza Cross
+
+# 🏋️‍♂️ Sistema de Gestión para Gimnasio – Fortaleza Cross
 
 Sistema web completo desarrollado para la administración de un gimnasio.
 
@@ -21,49 +22,53 @@ Permite gestionar:
 
 El sistema fue diseñado como solución real lista para implementación comercial.
 
-🚀 Tecnologías Utilizadas
+
+# 🚀 Tecnologías Utilizadas
 
 Tecnología	Uso
 
-HTML5	      Estructura
+* HTML5	      Estructura
 
-CSS3	      Estilos
+* CSS3	      Estilos
 
-JavaScript	Interactividad
+* JavaScript	Interactividad
 
-PHP	        Backend
+* PHP	        Backend
 
-MySQL	      Base de datos
+* MySQL	      Base de datos
 
-PHPMailer	  Envío de correos
+* PHPMailer	  Envío de correos
 
-API de Mapa	Ubicación del gimnasio
+* API de Mapa	Ubicación del gimnasio
 
-⚙️ Requisitos del Sistema
+
+# ⚙️ Requisitos del Sistema
 
 Antes de ejecutar el proyecto, asegurarse de contar con:
 
-Servidor local (XAMPP, WAMP, Laragon, etc.)
+* Servidor local (XAMPP, WAMP, Laragon, etc.)
 
-PHP 7 o superior
+* PHP 7 o superior
 
-MySQL
+* MySQL
 
-phpMyAdmin
+* phpMyAdmin
 
-Conexión a internet (para APIs externas)
+* Conexión a internet (para APIs externas)
 
-🗄️ Instalación de la Base de Datos
+
+# 🗄️ Instalación de la Base de Datos
 
 Crear una base de datos en phpMyAdmin
 
 Importar el archivo:
 
-fortaleza_cross.sql
+* fortaleza_cross.sql
 
 Este archivo se encuentra en la raíz del proyecto.
 
 🔌 Configuración de Conexión
+
 
 Ir al archivo:
 
@@ -71,33 +76,34 @@ Ir al archivo:
 
 Completar con tus datos locales:
 
-$host = "localhost";
+*  $host = "localhost";
 
-$user = "TU_USUARIO";
+*  $user = "TU_USUARIO";
 
-$pass = "TU_PASSWORD";
+*  $pass = "TU_PASSWORD";
 
-$db   = "TU_BASE_DE_DATOS";
+*  $db   = "TU_BASE_DE_DATOS";
 
-✉️ Configuración de Envío de Emails
+
+# ✉️ Configuración de Envío de Emails
 
 El sistema utiliza PHPMailer para:
 
-Registro de usuarios
+* Registro de usuarios
 
-Recuperación de contraseña
+* Recuperación de contraseña
 
-Notificaciones
+* Notificaciones
 
-Buscar los archivos donde se configure el envío de correo y completar:
+* Buscar los archivos donde se configure el envío de correo y completar:
 
-$mail->Host = 'smtp.tuservidor.com';
+* $mail->Host = 'smtp.tuservidor.com';
 
-$mail->Username = 'tu_email';
+* $mail->Username = 'tu_email';
 
-$mail->Password = 'tu_password';
+* $mail->Password = 'tu_password';
 
-$mail->Port = 587;
+* $mail->Port = 587;
 
 ⚠️ Importante: Usar credenciales propias.
 
