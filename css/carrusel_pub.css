@@ -1,0 +1,207 @@
+/* Estilos generales para la sección de eventos */
+.eventos {
+    margin-top: 60px;
+    padding: 20px;
+    /* Espaciado interno superior/inferior y lateral */
+    background: linear-gradient(120deg, #494848da, #ebe8e8, #a8a6a6da, #ebe8e8, #c5c2c2, #494848da, #c5c2c2);
+    /* Un fondo claro para la sección */
+    text-align: center;
+    /* Centrar el contenido de la sección */
+}
+
+.eventos-contenedor {
+    display: flex;
+    /* Usar flexbox para alinear el texto y el carrusel */
+    flex-direction: column;
+    /* Apilar en dispositivos pequeños */
+    align-items: center;
+    /* Centrar los elementos */
+    max-width: 1200px;
+    /* Ancho máximo del contenedor */
+    margin: 0 auto;
+    /* Centrar el contenedor en la página */
+    gap: 40px;
+    /* Espacio entre el texto y el carrusel */
+    animation: slideInRight 1s ease-in-out;
+    /* Aplicar la animación */
+}
+
+/* Definición de la animación */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        /* Mueve el contenedor 50px a la derecha */
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (min-width: 768px) {
+    .eventos-contenedor {
+        flex-direction: row;
+        /* En pantallas más grandes, colocar uno al lado del otro */
+        justify-content: space-around;
+        /* Distribuir el espacio */
+    }
+}
+
+/* --- ESTILOS PARA EL CONTENEDOR DE INFORMACIÓN (TEXTO) --- */
+.evento-info {
+    background: linear-gradient(135deg, #4a4a4a, #2c2c2c);
+    /* Degradado gris oscuro */
+    color: #f0f0f0;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    max-width: 500px;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    opacity: 0;
+    /* Lo ocultamos inicialmente */
+    animation: slideInRight 1s ease-out 0.2s forwards;
+    /* Inicia después de 0.2s */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.evento-info:hover {
+    transform: translateY(-8px);
+    /* Más desplazamiento vertical */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    /* Sombra más profunda */
+}
+
+.evento-info h2 {
+    font-size: 2.2em;
+    color: #ffffff;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #ffffff55;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.evento-info p {
+    font-size: 1.1em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.evento-info p:hover {
+    color: #4CAF50;
+    /* Resalta el color al pasar el mouse sobre el párrafo */
+}
+
+.evento-info p:last-child {
+    margin-bottom: 0;
+    /* Eliminar el margen inferior del último párrafo */
+}
+
+/* Estilos para los íconos (emojis) */
+.evento-info p span {
+    margin-right: 10px;
+    /* Espacio entre el icono y el texto */
+}
+
+/* Puedes añadir un botón para "Más Información" o "Inscríbete" */
+.evento-info a.boton-accion {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.evento-info a.boton-accion:hover {
+    background-color: #218838;
+    /* Color de fondo del botón al pasar el ratón */
+}
+
+/* --- ESTILOS PARA EL CARRUSEL (mantener el que ya tienes o adaptarlo) --- */
+.evento-carrusel {
+    background-color: #333;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    overflow: hidden;
+    /* 👈 Esto asegura que las imágenes no se salgan */
+    opacity: 0;
+    animation: slideInLeft 1s ease-out 0.4s forwards;
+    /* Entrada desde la izquierda, ligeramente retrasada */
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    /* 👈 Asegura que no se estire más de la cuenta */
+}
+
+.carousel-item {
+    min-width: 100%;
+    flex-shrink: 0;
+    /* 👈 Evita que se reduzcan de tamaño */
+    height: 600px;
+    /* Ajusta a la altura que prefieras */
+    position: relative;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 👈 Hace que la imagen cubra el contenedor, recortando lo que no cabe */
+    border-radius: 15px;
+    /* Opcional, para redondear las esquinas */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    /* Botones circulares */
+    font-size: 1.5em;
+    z-index: 10;
+    /* Asegura que los botones estén por encima de las imágenes */
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}

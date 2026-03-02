@@ -1,0 +1,324 @@
+/* Estilos Generales y Tipografía */
+.seccion-gestion-membresia {
+    font-family: 'Montserrat', sans-serif;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.seccion-gestion-membresia h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #4dc3ff;
+    /* Azul claro para destacar sobre el fondo oscuro */
+    margin-bottom: 25px;
+    border-left: 5px solid #4dc3ff;
+    padding-left: 15px;
+}
+
+/* Contenedor y Estilo de la Tarjeta Única */
+.contenedor-tarjeta-gestion {
+    display: flex;
+    justify-content: center;
+    /* Centra el único elemento */
+    margin-bottom: 40px;
+}
+
+.tarjeta-membresia.tarjeta-gestion {
+    /* Fondo Oscuro y Redondeado */
+    background: linear-gradient(145deg, rgb(31, 42, 56), rgb(24, 34, 43));
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 650px;
+    /* Ancho cómodo para el formulario */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    color: #f8f9fa;
+    border: 1px solid #343a40;
+    animation: borderGlowPulse 4s infinite;
+}
+
+@keyframes borderGlowPulse {
+    0% {
+        box-shadow: 0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 5px rgba(33, 212, 253, 0.7);
+        /* Base glow */
+    }
+
+    25% {
+        box-shadow: 0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 0px transparent,
+            10px 0 20px rgba(33, 212, 253, 0.7),
+            /* Right side */
+            0 0 5px rgba(33, 212, 253, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 0px transparent,
+            0 0 0px transparent,
+            0 10px 20px rgba(33, 212, 253, 0.7),
+            /* Bottom side */
+            0 0 0px transparent,
+            0 0 5px rgba(33, 212, 253, 0.7);
+    }
+
+    75% {
+        box-shadow: 0 0 0px transparent,
+            -10px 0 20px rgba(33, 212, 253, 0.7),
+            /* Left side */
+            0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 5px rgba(33, 212, 253, 0.7);
+    }
+
+    100% {
+        box-shadow: 0 -10px 20px rgba(33, 212, 253, 0.7),
+            /* Top side */
+            0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 5px rgba(33, 212, 253, 0.7);
+    }
+}
+
+
+.tarjeta-membresia .titulo-tarjeta {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #4dc3ff;
+    /* Amarillo/Dorado para el título */
+}
+
+/* Estilo para el modo de acción dentro del título */
+#modo-accion {
+    font-size: 20px;
+    color: #adb5bd;
+    /* Color de Resalte Suave */
+}
+
+/* Estilos de Formularios (Inputs, Selects y Textareas) */
+.campo-formulario {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.campo-formulario label {
+    font-weight: bold;
+    color: #adb5bd;
+    /* Color de Resalte Suave */
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.tarjeta-membresia input[type="text"],
+.tarjeta-membresia input[type="number"],
+.tarjeta-membresia textarea,
+.tarjeta-membresia select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #495057;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+/* Estilos para Checkboxes */
+.campo-formulario-checks {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-left: 5px;
+}
+
+.campo-formulario-checks input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+.campo-formulario-checks label {
+    font-weight: normal;
+    color: #f8f9fa;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.contenedor-preview-tarjeta {
+    margin-top: 30px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.imagen-preview {
+    animation: borderGlowPulse 4s infinite;
+}
+
+.imagen-preview:hover {
+    transform: scale(1.08);
+    transition: transform 0.3s;
+}
+
+.titulo-preview {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #4dc3ff;
+}
+
+
+/* ------------------------------------------- */
+/* Estilos de Botones  */
+/* ------------------------------------------- */
+
+/* Botón de Acción Principal (Modificar/Registrar) */
+.boton-accion-principal {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 35px;
+    /* Más espacio */
+    cursor: pointer;
+    border: 2px solid #4dc3ff;
+    /* Borde con el mismo azul que el título */
+    border-radius: 50px;
+    transition: background-color 0.3s, transform 0.1s;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    /* Color de contraste fuerte */
+    padding: 10px 20px;
+    background-color: transparent;
+    /* Transparente para el fondo oscuro */
+    color: #4dc3ff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.boton-accion-principal:hover {
+    background-color: #4dc3ff;
+    color: #0a0a23;
+    /* Texto oscuro al hacer hover */
+    transform: translateY(-2px);
+}
+
+/* Contenedor y Botón de Eliminar */
+.contenedor-estado-accion {
+    text-align: center;
+    margin-top: 40px;
+    /* Separación del formulario */
+}
+
+.boton-estado {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 12px 35px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+    background-color: #dc3545;
+    /* Rojo de peligro */
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.boton-estado:hover:not([disabled]) {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+.boton-estado[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.nota-eliminar {
+    color: #adb5bd;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* ========================================= */
+/* MEDIA QUERY: PARA PANTALLAS PEQUEÑAS (Móviles y Tabletas) */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    /* Contenedor principal: ancho 100%, sin márgenes laterales */
+    .seccion-gestion-membresia {
+        display: block;
+        max-width: 100%;
+        width: 100%;
+        margin: 15px 0;
+        padding: 15px 10px;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+
+    /* Centrado correcto y responsivo */
+    .contenedor-tarjeta-gestion {
+        display: block;
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* La tarjeta ocupa 100% en móvil */
+    .tarjeta-membresia.tarjeta-gestion {
+        max-width: 100%;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Ajustes de tipografía */
+    .seccion-gestion-membresia h2 {
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    .tarjeta-membresia .titulo-tarjeta {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    /* Botones */
+    .boton-accion-principal,
+    .boton-eliminar {
+        width: 90%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Contenedor de eliminar */
+    .contenedor-eliminar-accion {
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+}

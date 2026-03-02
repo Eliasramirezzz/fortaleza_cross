@@ -1,0 +1,183 @@
+/* =========================================================
+   ESTILOS DE LA SECCIÓN REGISTRO DE CLIENTES (LIMPIO Y CORREGIDO)
+   ========================================================= */
+
+.client-reg-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    color: #f0f0f0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    /* Sombra más oscura */
+}
+
+.client-reg-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #4dc3ff;
+    /* Azul claro */
+    margin-bottom: 25px;
+    border-left: 5px solid #4dc3ff;
+    padding-left: 15px;
+}
+
+.client-reg-description {
+    margin-bottom: 20px;
+    /* Cambiado a margin-bottom para separación inferior */
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+/* -------------------------------------------------------------------- */
+/* CONTENEDOR PRINCIPAL DEL FORMULARIO */
+/* -------------------------------------------------------------------- */
+.client-reg-form-container {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    /* Mantenemos el degradado en el contenedor del formulario */
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+
+    /* 💥 CENTRADO Y ANCHO FIJO: Usamos max-width y margin: 0 auto; */
+    max-width: 550px;
+    /* Un poco más de 500px para que se vea bien */
+    margin: 20px auto 0 auto;
+    /* Agregamos margen superior y centramos */
+}
+
+/* El Formulario (Contenedor de los grupos de campos) */
+/* Ya no es un grid de 2 columnas. Apilamos los grupos verticalmente. */
+.client-reg-form-unified {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Espacio entre los grupos (email, plan, botón) */
+}
+
+/* -------------------------------------------------------------------- */
+/* GRUPOS DE CAMPOS (Email y Plan) */
+/* -------------------------------------------------------------------- */
+.client-reg-group-email,
+.client-reg-group-plan {
+    padding: 15px;
+    border: 1px solid #334454;
+    border-radius: 6px;
+    /* 💥 ESPACIADO ENTRE INPUTS: Aplicamos gap/margin a los grupos de input dentro */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Esto da espacio entre cada input/select dentro del grupo */
+    background: #17202a;
+    /* Fondo sólido oscuro para un diseño más limpio */
+}
+
+
+/* -------------------------------------------------------------------- */
+/* INPUTS Y LABELS */
+/* -------------------------------------------------------------------- */
+.client-reg-input-group {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.client-reg-label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #4dc3ff;
+    font-size: 0.9rem;
+}
+
+.client-reg-input,
+.client-reg-select {
+    padding: 10px 12px;
+    border: 1px solid #334454;
+    border-radius: 4px;
+    background-color: #0d1218;
+    color: #f0f0f0;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.client-reg-input:focus,
+.client-reg-select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    outline: none;
+}
+
+/* Mensaje de estado de Email */
+.email-status-message {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+
+}
+
+.email-status-message.existing {
+    background-color: #4CAF50;
+    color: #0a0a23;
+}
+
+.email-status-message.new {
+    background-color: #ffc107;
+    color: #0a0a23;
+}
+
+/* -------------------------------------------------------------------- */
+/* BOTÓN DE ENVIAR */
+/* -------------------------------------------------------------------- */
+.client-reg-submit-btn {
+    /* El botón ya no necesita grid-column: 1 / -1; porque el contenedor es flex-direction: column; */
+    padding: 12px 20px;
+    border: 2px solid #4dc3ff;
+    background-color: transparent;
+    color: #4dc3ff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.client-reg-submit-btn:hover {
+    background-color: #4dc3ff;
+    color: #0a0a23;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* -------------------------------------------------------------------- */
+/* Mensaje de validacion en los campos*/
+/* -------------------------------------------------------------------- */
+.status-message {
+    font-size: 0.85rem;
+    margin-top: 4px;
+    font-weight: bold;
+}
+
+.error-message {
+    color: red;
+}
+
+.success-message {
+    color: green;
+
+}
+
+.input-error {
+    border: 2px solid red !important;
+
+}
+
+.input-success {
+    border: 2px solid green !important;
+
+}

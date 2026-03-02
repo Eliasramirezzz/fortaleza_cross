@@ -1,0 +1,237 @@
+/* ========================================================= */
+/* ESTILOS DEL MÓDULO DE REGISTRO DE CLIENTE */
+/* (Clases con prefijo 'reg-cli-' para evitar conflictos) */
+/* ========================================================= */
+
+/* --- 1. SECCIÓN PRINCIPAL (Contenedor externo) --- */
+.reg-cli-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    /* Manteniendo tu degradado */
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    color: #f0f0f0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    font-family: 'Poppins', sans-serif;
+}
+
+.reg-cli-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #4dc3ff;
+    /* Azul claro */
+    margin-bottom: 25px;
+    border-left: 5px solid #4dc3ff;
+    padding-left: 15px;
+}
+
+.cont-reg-cliente-title {
+    display: flex;
+
+    align-items: center;
+}
+
+/* --- 2. ESTRUCTURA DEL FORMULARIO (Contenedor Flex de los Grupos) --- */
+.reg-cli-form {
+    /* La forma es un contenedor Flex vertical para que el nuevo cont-sect-form
+       y reg-cli-actions se apilen correctamente. */
+    display: flex;
+    flex-direction: column;
+
+    /* El resto de estilos se mantienen */
+    background: none;
+    margin: 10px auto;
+    padding: 0;
+}
+
+.cont-sect-form {
+    /* Ocupa todo el ancho disponible para que los grupos se dividan bien */
+    width: 100%;
+
+    /* ¡CLAVE! Aplicamos el Flexbox aquí */
+    display: flex;
+    flex-wrap: wrap;
+
+    /* Reglas para las columnas */
+    justify-content: space-between;
+    /* Distribuye el espacio */
+    align-items: flex-start;
+    gap: 30px;
+    /* Separación entre columnas */
+}
+
+/* --- 3. GRUPOS DE DATOS (Las dos Columnas) --- */
+.reg-cli-group {
+    flex: 1 1 calc(10% - 15px);
+    background: linear-gradient(135deg, #0a0a23, #3c3c4e 50%, #0a0a23);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.reg-cli-subtitle {
+    color: white;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #7f8c8d;
+}
+
+/* --- 4. ESTILOS DE INPUTS --- */
+.reg-cli-input-group {
+    padding: 10px 12px;
+    border: 1px solid #334454;
+    border-radius: 4px;
+    background-color: #0d1218;
+    color: #f0f0f0;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.reg-cli-input-group label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #4dc3ff;
+    font-size: 0.9rem;
+}
+
+.reg-cli-input-group input,
+.reg-cli-input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #7f8c8d;
+    border-radius: 5px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.reg-cli-input-group input:focus,
+.reg-cli-input-group select:focus {
+    border-color: #4dc3ff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(77, 195, 255, 0.5);
+}
+
+.reg-cli-input-group input::placeholder {
+    color: #7f8c8d;
+}
+
+/* --- 5. BOTONES Y ACCIONES (Mis estilos existentes) --- */
+.reg-cli-actions {
+    /* Ocupa todo el ancho bajo el cont-sect-form */
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #34495e;
+    /* Mantenemos el display flex para los botones */
+    display: flex;
+    justify-content: flex-end;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-registrar {
+    padding: 12px 20px;
+    border: 2px solid #4dc3ff;
+    background-color: transparent;
+    color: #4dc3ff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.btn-registrar:hover {
+    background-color: #4dc3ff;
+    color: #0a0a23;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-limpiar {
+    padding: 12px 20px;
+    border: 2px solid rgb(255, 42, 42);
+    color: rgb(255, 42, 42);
+    background-color: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.btn-limpiar:hover {
+    background-color: rgb(238, 51, 51);
+    color: #0a0a23;
+    transform: translateY(-1px);
+}
+
+/* ========================================================= */
+/* ESTILOS DE VALIDACIÓN EN TIEMPO REAL */
+/* ========================================================= */
+/* --- 1. ESTADO DE ÉXITO (Borde Verde) --- */
+.input-success {
+    border-color: #4CAF50 !important;
+    /* Verde sólido */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.8) !important;
+    /* Resplandor verde */
+}
+
+/* --- 2. ESTADO DE ERROR (Borde Rojo) --- */
+.input-error {
+    border-color: #F44336 !important;
+    /* Rojo sólido */
+    box-shadow: 0 0 5px rgba(244, 67, 54, 0.8) !important;
+    /* Resplandor rojo */
+}
+
+/* --- 3. ESTILO BASE PARA MENSAJES DE VALIDACIÓN --- */
+.validacion-mensaje {
+    display: block;
+    /* Asegura que ocupe su propia línea */
+    font-size: 0.85rem;
+    margin-top: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* --- 4. ESTILO ESPECÍFICO PARA MENSAJE DE ERROR --- */
+.mensaje-error {
+    color: #F44336;
+    /* Rojo para el texto de error */
+}
+
+/* --- 5. ESTILO ESPECÍFICO PARA MENSAJE DE ÉXITO (Opcional) --- */
+.mensaje-success {
+    color: #4CAF50;
+    /* Verde para el texto de éxito (si se usa) */
+}
+
+/* --- 6. RESPONSIVIDAD --- */
+@media (max-width: 768px) {
+
+    /* Aquí forzamos que el contenedor de grupos se convierta en una sola columna */
+    .cont-sect-form {
+        flex-direction: column;
+    }
+
+    .reg-cli-group {
+        /* Ocupa el ancho completo en móviles */
+        flex: 1 1 100%;
+    }
+
+    .reg-cli-actions {
+        justify-content: center;
+    }
+}

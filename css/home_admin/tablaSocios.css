@@ -1,0 +1,279 @@
+/* =========================================================
+ESTILOS GENERALES DE LA SECCIÓN CLIENTES
+   ========================================================= */
+
+.section-clientes {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    /* Sombra más oscura */
+}
+
+.section-clientes h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #4dc3ff;
+    /* Azul claro para destacar sobre el fondo oscuro */
+    margin-bottom: 25px;
+    border-left: 5px solid #4dc3ff;
+    padding-left: 15px;
+}
+
+.client-search-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    /* Azul claro para destacar sobre el fondo oscuro */
+    padding-left: 15px;
+}
+
+/* --- Estilos del Contenedor Principal (Revisado) --- */
+.client-controls {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    /* Importante para que los elementos salten de línea en móvil */
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+/* --- Estilo de la Barra de Búsqueda (Sin cambios funcionales, solo para referencia) --- */
+#searchClient {
+    padding: 10px 15px;
+    border: 1px solid #334454;
+    border-radius: 6px;
+    background-color: #0d1218;
+    color: white;
+    width: 300px;
+    /* Esto permite que crezca o se encoja en pantallas medianas */
+    flex-grow: 1;
+}
+
+/* --- Estilos del Contenedor de Filtros (.client-filter-controls) --- */
+.client-filter-controls {
+    display: flex;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+/* 1. CAMBIO CLAVE: Cambiar la dirección de la columna a fila */
+.filter-group {
+    display: flex;
+    flex-direction: row;
+    /* <--- ¡ESTE ES EL CAMBIO CLAVE! Ahora se alinean horizontalmente */
+    align-items: center;
+    /* Alineación vertical dentro del grupo */
+    gap: 10px;
+    /* Separación entre el Label y el Select */
+}
+
+/* 2. Estilo del Label */
+.filter-group label {
+    font-size: 1em;
+    /* Subido de 0.85em a 1em para que sea más legible, como en la imagen */
+    font-weight: bold;
+    /* Ya no necesita margin-bottom porque es alineación horizontal */
+    flex-shrink: 0;
+    /* Asegura que el texto del label no se rompa */
+}
+
+/* 3. Diseño del Select (Manteniendo tu estilo visual) */
+.client-filter-controls select {
+    padding: 8px 10px;
+    border: 1px solid #3c3c4e;
+    border-radius: 5px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    font-size: 1em;
+    cursor: pointer;
+    min-width: 150px;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.client-filter-controls select:hover,
+.client-filter-controls select:focus {
+    border-color: #4dc3ff;
+    background-color: #34495e;
+    outline: none;
+}
+
+/* --- Icono de Exportación (Para referencia) --- */
+.export-icon {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* --- RESPONSIVIDAD PARA MÓVILES (Para asegurar que se apile en pantallas pequeñas) --- */
+
+@media (max-width: 800px) {
+    .client-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #searchClient {
+        width: 100%;
+    }
+
+    /* En móvil, volvemos a la dirección de columna para que el label y el select tengan más espacio */
+    .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .client-filter-controls {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .client-filter-controls select {
+        min-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .export-icon {
+        align-self: flex-start;
+        margin-top: 10px;
+    }
+}
+
+/* =========================================================
+ESTILOS ESPECÍFICOS DE LA TABLA DE CLIENTES (.client-data-table)
+   ========================================================= */
+
+.client-table-container {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    border: 1px solid #334454;
+    border-radius: 8px;
+}
+
+.client-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+    /* Ancho mínimo para mantener el formato en desktop */
+}
+
+.client-data-table thead {
+    background: linear-gradient(135deg, #0a0a23, #42426d 50%, #0a0a23);
+    /* Fondo negro o azul muy oscuro */
+    color: #fff;
+}
+
+/* Encabezados de la tabla */
+.client-data-table thead th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    border-bottom: 3px solid #4CAF50;
+    /* Línea separadora verde */
+}
+
+/* Filas y Celdas */
+.client-data-table tbody td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #334454;
+    vertical-align: middle;
+    font-size: 0.95rem;
+}
+
+/* Estilo para filas pares (zebra striping) */
+.client-data-table tbody tr:nth-child(even) {
+    background-color: #1a2430;
+}
+
+/* Efecto HOVER en filas */
+.client-data-table tbody tr:hover {
+    background-color: #2c3a4e;
+    transition: background-color 0.2s;
+}
+
+/* Estilos de Estado (Reutilizamos las clases de estado, ya que son genéricas y útiles) */
+.status-active {
+    font-weight: bold;
+    color: #4CAF50;
+    /* Verde para ACTIVO */
+}
+
+.status-inactive {
+    font-weight: bold;
+    color: #FF6347;
+    /* Naranja/Rojo para INACTIVO */
+}
+
+/* Botones de Acción (Usando las nuevas clases btn-client-action) */
+.btn-client-action {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 5px;
+    margin: 0 3px;
+    transition: transform 0.2s;
+}
+
+.btn-client-action:hover {
+    transform: scale(1.1);
+}
+
+.btn-client-edit {
+    color: #8be9fd;
+}
+
+/* Azul claro para editar */
+.btn-client-delete {
+    color: #FF6347;
+}
+
+/* Rojo para eliminar */
+/* Paginación (Usando el nuevo contenedor de paginación) */
+.client-pagination-controls {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.client-pagination-controls button {
+    padding: 10px 20px;
+    border: 2px solid #4dc3ff;
+    /* Borde con el mismo azul que el título */
+    background-color: transparent;
+    /* Transparente para el fondo oscuro */
+    color: #4dc3ff;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.client-pagination-controls button:hover {
+    background-color: #4dc3ff;
+    color: #0a0a23;
+    /* Texto oscuro al hacer hover */
+}
+
+#MsjtotalClients {
+    text-align: center;
+    color: #fefefe;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.0rem;
+    font-style: italic;
+}

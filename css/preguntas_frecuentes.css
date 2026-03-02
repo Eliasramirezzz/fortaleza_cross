@@ -1,0 +1,331 @@
+/* ==================================== */
+/* PREGUNTAS FRECUENTES - ACORDEÓN (REDISEÑO) */
+/* ==================================== */
+
+.seccion-PF {
+    padding: 80px 20px;
+    background: linear-gradient(120deg, #494848da, #ebe8e8, #a8a6a6da,#ebe8e8,#c5c2c2, #494848da,#c5c2c2); /* Un fondo claro para la sección */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Título principal de la sección */
+.seccion-PF h2 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 50px;
+    width: 90%;
+    max-width: 900px;
+    background: linear-gradient(to right,
+        #a8dadc 0%,
+        #0f1c24 30%,
+        #0f1c24 70%,
+        #a8dadc 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    animation: titleSwipeScale 6s infinite ease-in-out;
+}
+
+/* Keyframes para la animación del título (asegúrate de que esté definida) */
+@keyframes titleSwipeScale {
+    0% {
+        transform: scale(1);
+        background-position: -100% 0;
+    }
+    25% {
+        transform: scale(1.05);
+        background-position: 0% 0;
+    }
+    50% {
+        transform: scale(1);
+        background-position: 100% 0;
+    }
+    75% {
+        transform: scale(1.05);
+        background-position: 0% 0;
+    }
+    100% {
+        transform: scale(1);
+        background-position: -100% 0;
+    }
+}
+
+.contenedor-pf {
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 50px; /* Espacio entre el acordeón principal y la sección de pregunta del usuario */
+}
+
+.acordeon-item {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.acordeon-item:last-child {
+    border-bottom: none;
+}
+
+.acordeon-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+.acordeon-header:hover {
+    background-color: #f0f0f0;
+}
+
+.acordeon-numero {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #a8dadc;
+    margin-right: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.acordeon-header h3 {
+    flex-grow: 1;
+    font-size: 1.2rem;
+    font-weight: 700; /* Preguntas en negrita */
+    color: #333333;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.acordeon-toggle {
+    font-size: 1.8rem;
+    color: #a8dadc;
+    margin-left: 20px;
+    transition: transform 0.3s ease;
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.acordeon-toggle::before {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.acordeon-item.active .acordeon-toggle::before {
+    content: '-';
+}
+
+.acordeon-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+    padding: 0 25px;
+    background-color: #fcfcfc; /* Un color de fondo muy suave para la respuesta */
+    border-top: 1px dashed #e9ecef; /* Línea divisoria suave */
+}
+
+/* Estilo para las Respuestas (sin negrita, mejor espaciado y legibilidad) */
+.acordeon-content p {
+    font-size: 1.05rem; /* Ligeramente más grande para mejor lectura */
+    color: #495057; /* Un gris más oscuro para mejor contraste */
+    line-height: 1.7; /* Mayor interlineado para legibilidad */
+    padding-top: 20px; /* Espacio arriba del texto */
+    padding-bottom: 20px; /* Espacio abajo del texto */
+    margin: 0;
+    font-weight: 400; /* Sin negrita */
+    font-family: 'Open Sans', sans-serif; /* Puedes usar 'Open Sans' para el cuerpo de texto si la tienes importada, si no, 'Montserrat' o la fuente de texto por defecto */
+}
+
+/* ------------------------------------ */
+/* Campo de Pregunta Personal del Usuario */
+/* ------------------------------------ */
+.acordeon-user-question {
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 35px; /* Más padding interno */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos internos */
+    gap: 20px; /* Espacio entre los elementos */
+    margin-top: 50px; /* Espacio desde el acordeón */
+}
+
+.acordeon-user-question label {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0f1c24; /* Color de tu azul oscuro */
+    margin-bottom: 10px; /* Espacio entre el label y el textarea */
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.acordeon-user-question textarea {
+    width: 100%;
+    padding: 15px 20px; /* Padding generoso */
+    border: 2px solid #a8dadc; /* Borde más visible con color de acento */
+    border-radius: 10px; /* Bordes más redondeados */
+    font-size: 1.1rem; /* Tamaño de fuente legible */
+    font-family: 'Open Sans', sans-serif; /* Consistente con el texto del cuerpo */
+    color: #333333;
+    background-color: #f8f9fa; /* Fondo ligeramente gris para diferenciarse */
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 120px; /* Altura mínima */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.acordeon-user-question textarea:focus {
+    border-color: #21d4fd; /* Color de acento al enfocar */
+    box-shadow: 0 0 0 4px rgba(33, 212, 253, 0.2); /* Sombra de enfoque */
+    outline: none;
+}
+
+.acordeon-user-question button {
+    background-color: #0f1c24; /* Tu azul oscuro */
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px; /* Padding generoso para un botón clicable */
+    border-radius: 50px; /* Bordes completamente redondeados */
+    font-size: 1.15rem; /* Texto del botón más grande */
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px; /* Espacio sobre el botón */
+}
+
+.acordeon-user-question button:hover {
+    background-color: #35ab3f; /* Color de acento al pasar el mouse */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+#respuesta-servidor {
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Responsive para el acordeón y la sección de pregunta del usuario */
+@media (max-width: 768px) {
+    .seccion-PF {
+        padding: 50px 15px;
+    }
+    .seccion-PF h2 {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        letter-spacing: 1.5px;
+        animation: none;
+        -webkit-text-fill-color: #0f1c24;
+        background: none;
+    }
+    .contenedor-pf {
+        margin-bottom: 40px;
+    }
+    .acordeon-header {
+        padding: 18px 20px;
+    }
+    .acordeon-numero {
+        font-size: 1.1rem;
+        margin-right: 10px;
+    }
+    .acordeon-header h3 {
+        font-size: 1.05rem;
+    }
+    .acordeon-toggle {
+        font-size: 1.6rem;
+        margin-left: 15px;
+    }
+    .acordeon-content {
+        padding: 0 20px;
+    }
+    .acordeon-content p {
+        font-size: 0.95rem;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .acordeon-user-question {
+        padding: 25px;
+        gap: 15px;
+        margin-top: 40px;
+    }
+    .acordeon-user-question label {
+        font-size: 1.1rem;
+    }
+    .acordeon-user-question textarea {
+        padding: 12px 15px;
+        font-size: 1rem;
+        min-height: 100px;
+    }
+    .acordeon-user-question button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .seccion-PF h2 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+    }
+    .acordeon-header {
+        padding: 15px 15px;
+    }
+    .acordeon-numero {
+        font-size: 1rem;
+        margin-right: 8px;
+    }
+    .acordeon-header h3 {
+        font-size: 0.95rem;
+    }
+    .acordeon-toggle {
+        font-size: 1.4rem;
+        margin-left: 10px;
+    }
+    .acordeon-content {
+        padding: 0 15px;
+    }
+    .acordeon-content p {
+        font-size: 0.9rem;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    .acordeon-user-question {
+        padding: 20px;
+        gap: 10px;
+        margin-top: 30px;
+    }
+    .acordeon-user-question label {
+        font-size: 1rem;
+    }
+    .acordeon-user-question textarea {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+        min-height: 80px;
+    }
+    .acordeon-user-question button {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}

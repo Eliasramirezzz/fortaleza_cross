@@ -1,0 +1,249 @@
+/*=========================================
+ * ESTILOS PARA EL PANEL DE ADMINISTRADOR
+ * (Sección de Pagos) - ESTILO OSCURO
+ * =========================================
+ */
+/* Estilos de la sección general */
+.section-pagos {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra más oscura */
+}
+.section-pagos__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #4dc3ff; /* Azul claro para destacar sobre el fondo oscuro */
+    margin-bottom: 25px;
+    border-left: 5px solid #4dc3ff; 
+    padding-left: 15px;
+}
+
+/* --- Controles y Filtrado --- */
+.section-pagos__controls {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: white; /* Texto blanco para verse sobre el fondo oscuro */
+    margin-right: 10px;
+}
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #6c757d;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #343a40; /* Fondo oscuro en el select */
+    color: white; /* Texto blanco en el select */
+}
+.filter-input-search{
+    padding: 8px 12px;
+    border: 1px solid #6c757d;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #343a40; /* Fondo oscuro en el select */
+    color: white; /* Texto blanco en el select */
+}
+/* --- Estilos para la Tabla --- */
+.payment-table-container {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: auto;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+/* ESTILO CLAVE 1: Encabezado con color profesional (Azul Oscuro) */
+.payment-table thead {
+    background: linear-gradient(135deg, #0a0a23, #42426d 50%, #0a0a23); /* Fondo negro o azul muy oscuro */
+    color: #fff;
+}
+
+.payment-table__header {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+/* Filas del cuerpo de la tabla */
+.payment-table__body tr {
+    /* Fondo transparente o gris muy oscuro para armonizar */
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
+    transition: background-color 0.2s;
+}
+
+.payment-table__body tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.08); /* Rayado más visible */
+}
+
+/* ESTILO CLAVE 2: Efecto Hover en las filas */
+.payment-table__body tr:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* Efecto hover sutil y claro */
+    cursor: default;
+}
+
+/* Estilos para las celdas (td) que irán en el tbody */
+.payment-table__body td {
+    padding: 10px 15px;
+    font-size: 0.95em;
+    color: #333; /* Equivalente a --color-text */
+    color: rgb(222, 216, 247); /* Texto blanco para verse sobre el fondo oscuro */
+}
+
+.payment-table__btn:hover {
+    opacity: 0.85; 
+}
+
+/* ESTILO CLAVE 3A: Botón para Marcar Pagado (Verde) */
+.payment-table__btn--pagado {
+    background-color: #28a745; /* Verde */
+}
+
+/* ESTILO CLAVE 3B: Botón para Marcar Pendiente/Debe (Rojo) */
+.payment-table__btn--pendiente {
+    background-color: #dc3545; /* Rojo */
+}
+
+/* Usamos esta clase cuando el estado es 'Pendiente' o 'Vencido' y queremos marcar el pago. */
+.payment-table__btn--pagar-accion {
+    background-color: #007bff; /* Azul primario para acción de pago */
+}
+/* Usamos esta clase cuando el estado es 'Pagado' (cliente al día). */
+.payment-table__btn--al-dia {
+    background-color: #28a745; /* Verde para estado positivo */
+    cursor: default; /* No es una acción activa, es un estado */
+    opacity: 1;
+}
+/* Usamos esta clase cuando el estado es 'Vencido' (el cliente debe). */
+.payment-table__btn--debe {
+    background-color: #dc3545; /* Rojo para deuda/vencido */
+    cursor: default; /* No es una acción activa, es un estado */
+    opacity: 1;
+}
+.payment-table__btn--eliminar{
+    cursor: pointer; 
+    opacity: 1;
+}
+
+/* Estilos de estados */
+.status-paid { background-color: #28a745; color: #fff; border-radius: 4px; padding: 2px 8px; display: inline-block; } 
+.status-pending { background-color: #ffc107; color: #333; border-radius: 4px; padding: 2px 8px; display: inline-block; } 
+.status-overdue { background-color: #dc3545; color: #fff; border-radius: 4px; padding: 2px 8px; display: inline-block; } 
+
+/* Botones de acción dentro de la tabla */
+.payment-table__btn { /* Usando la nueva clase base para la acción */
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, opacity 0.3s;
+    white-space: nowrap; 
+    color: #fff;
+}
+
+/* --- Paginación --- */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#eliminarPagadosBtn{
+    padding: 10px 20px;
+    border: 2px solid #4dc3ff; /* Borde con el mismo azul que el título */
+    background-color: transparent; /* Transparente para el fondo oscuro */
+    color: #4dc3ff;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+#eliminarPagadosBtn:hover {
+    background-color: #4dc3ff; 
+    color: #0a0a23; /* Texto oscuro al hacer hover */
+}
+.pagination-btn {
+    padding: 10px 20px;
+    border: 2px solid #4dc3ff; /* Borde con el mismo azul que el título */
+    background-color: transparent; /* Transparente para el fondo oscuro */
+    color: #4dc3ff;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+.pagination-btn:hover {
+    background-color: #4dc3ff; 
+    color: #0a0a23; /* Texto oscuro al hacer hover */
+}
+
+.pagination-btn--hide {
+    display: none;
+}
+
+#MsjtotalPagos{
+    text-align: center;
+    color: #fefefe;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.0rem;
+    font-style: italic;
+}
+
+/* --- MEDIA QUERY para Responsive --- */
+@media (max-width: 768px) {
+    .section-pagos {
+        padding: 10px;
+        margin: 20px auto;
+    }
+
+    .section-pagos__title {
+        font-size: 1.5rem;
+        padding-left: 10px;
+    }
+
+    .section-pagos__controls {
+        justify-content: center;
+        flex-wrap: wrap; 
+    }
+    
+    .payment-table {
+        min-width: 600px; 
+    }
+    
+    .payment-table__header, 
+    .payment-table__body td {
+        padding: 8px 10px;
+        font-size: 0.85em;
+    }
+
+    .payment-table__btn {
+        padding: 4px 8px;
+        font-size: 0.8em;
+    }
+}

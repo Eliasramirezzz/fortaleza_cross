@@ -1,0 +1,282 @@
+/* ==================================== */
+/* SECCIÓN ACERCA DE NOSOTROS (AJUSTES FINALES) */
+/* ==================================== */
+
+.seccion-acerca-de-nosotros {
+    /* Fondo Parallax */
+    background-image: url('../img/img_parallax.jpg'); /* ¡IMPORTANTE! Cambia esto a la ruta de tu imagen de fondo */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* CLAVE para el efecto Parallax */
+    
+    /* Padding para el contenido dentro de la sección */
+    padding: 60px 20px; /* Reducimos el padding vertical */
+    
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    /* Altura total de la sección: Ajustada al 70% del viewport height */
+    min-height: 70vh; 
+    /* Si el contenido excede 70vh, se expandirá, pero la idea es que sea más compacta */
+    justify-content: center; /* Centra el contenido verticalmente si el espacio lo permite */
+}
+
+/* ELIMINAMOS LA CAPA DE SUPERPOSICIÓN OSCURA (::before)
+   Si tu imagen de fondo ya es oscura, no necesitamos oscurecerla más.
+   Si necesitas un ligero oscurecimiento, puedes ajustar la opacidad del .contenedor-AN o el color del texto.
+*/
+/* .seccion-acerca-de-nosotros::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 28, 36, 0.0); /* Opacidad a 0 para que no oscurezca */
+    /* z-index: 2; 
+} */
+
+
+/* Título principal de la sección */
+.seccion-acerca-de-nosotros h2 {
+    position: relative;
+    z-index: 3;
+    font-size: 3.2rem;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px; /* Reducimos el margen inferior del título */
+    width: 90%;
+    max-width: 900px;
+    
+    /* Para que el texto sea blanco sobre la imagen oscura, necesitamos redefinir el color.
+       Si la animación de gradiente es muy importante, tendríamos que ajustar los colores del gradiente.
+       Para un texto blanco puro, podemos simplificar: */
+    color: #FFFFFF; /* Texto blanco puro */
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.8); /* Sombra para que resalte más sobre fondos potencialmente claros */
+
+    /* Si quieres mantener el efecto de "swipe" de color, ajusta el gradiente para usar blancos y grises claros.
+       De lo contrario, puedes comentar las siguientes líneas: */
+    /*
+    background: linear-gradient(to right,
+        rgba(255, 255, 255, 0.8) 0%,   // Blanco semi-transparente
+        #ffffff 30%,                   // Blanco puro
+        #ffffff 70%,
+        rgba(255, 255, 255, 0.8) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    */
+    animation: titleSwipeScale 6s infinite ease-in-out;
+}
+
+/* Contenedor del texto con scroll interno y fondo transparente */
+.contenedor-AN {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 800px; /* Un poco más estrecho para enfocar el contenido */
+    
+    /* Altura ajustada: 50% del viewport height, para que ocupe menos espacio */
+    height: 50vh; 
+    min-height: 250px; /* Altura mínima para que no se colapse en pantallas muy pequeñas */
+    
+    padding: 30px 40px; /* Padding interno generoso (vertical/horizontal) */
+    
+    /* FONDO TRANSPARENTE: rgba(255, 255, 255, 0.0) */
+    background-color: rgba(255, 255, 255, 0.0); /* Completamente transparente */
+    border-radius: 12px; /* Mantenemos los bordes redondeados aunque no haya fondo */
+    
+    /* Sombra para darle un poco de "flotabilidad" al texto, sin que parezca una caja sólida */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada para resaltar sobre el fondo */
+    
+    overflow-y: scroll; /* Habilita el scroll vertical */
+    -webkit-overflow-scrolling: touch;
+
+    /* Estilizar la barra de scroll (Webkit browsers como Chrome, Safari) */
+    scrollbar-width: thin;
+    scrollbar-color: #a8dadc #f1f1f1; /* thumb color | track color */
+}
+
+/* Estilo para el thumb (el "mango" de la barra de scroll) */
+.contenedor-AN::-webkit-scrollbar {
+    width: 10px;
+}
+
+.contenedor-AN::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1); /* Pista transparente o semi-transparente para que se vea el fondo */
+    border-radius: 10px;
+}
+
+.contenedor-AN::-webkit-scrollbar-thumb {
+    background-color: #a8dadc;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Borde del thumb transparente */
+}
+
+.contenedor-AN::-webkit-scrollbar-thumb:hover {
+    background-color: #21d4fd;
+}
+
+
+/* Estilos para el texto dentro del contenedor-AN (AHORA EN BLANCO) */
+.contenedor-AN p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #FFFFFF; /* Texto blanco para contraste con la imagen oscura */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Sombra de texto suave para mejor legibilidad */
+    margin-bottom: 1.5rem;
+    font-family: 'Open Sans', sans-serif;
+    text-align: justify;
+}
+
+.contenedor-AN p strong {
+    color: #a8dadc; /* Un toque de acento en el blanco */
+    text-shadow: none; /* Eliminar sombra extra en strong */
+}
+
+.contenedor-AN h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #a8dadc; /* Tus colores de acento para subtítulos */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contenedor-AN ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.contenedor-AN ul li {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #FFFFFF; /* Texto blanco para ítems de lista */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 25px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.contenedor-AN ul li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #a8dadc; /* Color de acento para el ícono */
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: none; /* Eliminar sombra del bullet */
+}
+
+
+/* Responsive */
+@media (max-width: 992px) {
+    .seccion-acerca-de-nosotros {
+        padding: 50px 15px; /* Reducimos padding */
+        min-height: 65vh; /* Ajustamos altura */
+    }
+    .seccion-acerca-de-nosotros h2 {
+        font-size: 2.8rem;
+        margin-bottom: 25px;
+        letter-spacing: 1.5px;
+    }
+    .contenedor-AN {
+        height: 45vh; /* Ajusta la altura en tablets */
+        padding: 25px 30px;
+    }
+    .contenedor-AN p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    .contenedor-AN h3 {
+        font-size: 1.6rem;
+        margin-top: 2rem;
+    }
+    .contenedor-AN ul li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .seccion-acerca-de-nosotros {
+        padding: 40px 10px;
+        min-height: 60vh;
+        background-attachment: scroll; /* Desactiva parallax en móviles */
+    }
+    /* Eliminamos la capa ::before si ya no existe, o la hacemos completamente transparente */
+    /* .seccion-acerca-de-nosotros::before {
+        background-color: rgba(15, 28, 36, 0.0); 
+    } */
+    .seccion-acerca-de-nosotros h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        animation: none;
+        color: #FFFFFF; /* Color fijo en móvil */
+        background: none;
+        -webkit-text-fill-color: initial; /* Restaura el color normal para móviles */
+        text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+    .contenedor-AN {
+        height: 50vh; /* Ajusta la altura en móviles (puede ser más grande si el contenido lo necesita) */
+        min-height: 200px;
+        padding: 20px;
+        box-shadow: none; /* Quitamos la sombra para un look más integrado en móvil */
+        background-color: rgba(0, 0, 0, 0.2); /* Un ligero fondo oscuro para el texto en móvil si la imagen es muy brillante */
+    }
+    .contenedor-AN p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    .contenedor-AN h3 {
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+    }
+    .contenedor-AN ul li {
+        font-size: 0.95rem;
+        padding-left: 20px;
+    }
+    .contenedor-AN ul li::before {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .seccion-acerca-de-nosotros {
+        padding: 30px 10px;
+        min-height: 50vh;
+    }
+    .seccion-acerca-de-nosotros h2 {
+        font-size: 1.8rem;
+        letter-spacing: 0.8px;
+        margin-bottom: 15px;
+    }
+    .contenedor-AN {
+        height: 40vh; /* Ajusta la altura en móviles pequeños */
+        min-height: 180px;
+        padding: 15px;
+    }
+    .contenedor-AN p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    .contenedor-AN h3 {
+        font-size: 1.2rem;
+    }
+    .contenedor-AN ul li {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,677 @@
+/*Encabezado principal*/
+/*=========================GLOBAL STYLES FOR LOGIN PAGE=========================*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* Usamos Poppins para consistencia */
+    background: linear-gradient(120deg, #494848da, #ebe8e8, #a8a6a6da,#ebe8e8,#c5c2c2, #494848da,#c5c2c2);
+    display: flex; /* Cambiado de flex para centrar el login-box */
+    justify-content: center; /* Cambiado para centrar el login-box */
+    align-items: center; /* Cambiado para centrar el login-box */
+    min-height: 100vh; /* Asegura que ocupe al menos el 100% de la altura de la ventana */
+    color: #e0e0e0; /* Color de texto general claro */
+    overflow-x: hidden; /* Evita barras de desplazamiento horizontal */
+    flex-direction: column; /* Nuevo: para que el header y el login-container se apilen */
+    position: relative; /* Para el posicionamiento del header fijo */
+}
+
+/*=========================FIXED HEADER FOR LOGIN PAGE=========================*/
+.header {
+    width: 100%;
+    height: 60px; /* Altura del header */
+    background-color: #0a0a23; /* Mismo color que tu header principal */
+    position: fixed; /* Header fijo en la parte superior */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box; /* Incluye padding en el ancho/alto */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra para destacarlo */
+}
+
+.header .logo-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer; /* Indica que es clickeable */
+    text-decoration: none; /* Quita subrayado si se convierte en <a> */
+    color: white; /* Color del texto */
+    transition: all 0.3s ease; /* Transición para hover */
+}
+
+.header .logo-container:hover {
+    color: #00BFFF; /* Color azul claro al pasar el mouse */
+    transform: scale(1.02); /* Ligeramente más grande */
+}
+
+.header .logo {
+    height: 40px; /* Tamaño más pequeño para el logo del header de login */
+    margin-right: 10px; /* Espacio entre el logo y el texto */
+    transition: transform 0.3s ease;
+}
+
+.header .logo:hover {
+    transform: scale(1.08); /* Efecto al pasar el mouse */
+}
+
+.header #irHomeReg{
+    display: flex;
+    align-items: center;
+    cursor: pointer; /* Indica que es clickeable */
+    text-decoration: none; /* Quita subrayado si se convierte en <a> */
+    color: white; /* Color del texto */
+    transition: all 0.3s ease; /* Transición para hover */
+    margin-left: auto; /* Empuja el enlace al extremo derecho */
+}
+.header #irHomeReg:hover {
+    color: #00BFFF; /* Color azul claro al pasar el mouse */
+    transform: scale(1.02); /* Ligeramente más grande */
+}
+
+.header span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ==================================== */
+/* SECCIÓN REGISTRARSE (AJUSTES FINALES DE LAYOUT) */
+/* ==================================== */
+.seccion-registrar {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #a8a6a6da,#ebe8e8,#c5c2c2, #272727 0%, rgb(1, 1, 31) 50%, #272727, #ebe8e8, #a8a6a6da,#ebe8e8,#c5c2c2 150%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 50vh;
+    justify-content: center;
+}
+
+.seccion-registrar h2 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 50px;
+    width: 90%;
+    max-width: 900px;
+    background: linear-gradient(to right,
+        #a8dadc 0%,
+        #0f1c24 30%,
+        #0f1c24 70%,
+        #a8dadc 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    animation: titleSwipeScale 6s infinite ease-in-out;
+}
+
+@keyframes titleSwipeScale {
+    0% {
+        background-position: -100% 0; /* O -200% para más movimiento */
+        /* Si quieres un efecto de escala adicional en el título */
+        /* transform: scale(1); */ 
+    }
+    50% {
+        background-position: 100% 0; /* O 200% para más movimiento */
+        /* transform: scale(1.02); */
+    }
+    100% {
+        background-position: -100% 0; /* O -200% */
+        /* transform: scale(1); */
+    }
+}
+
+/* Contenedor principal de las dos columnas (Registro) */
+.contenedor-registrar {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 1400px; /* Mantener este ancho grande para que quepan */
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    min-height: auto; 
+}
+
+/* ======== Contenedor Izquierda (Imagen y Texto Apilados) ======== */
+.registro-izquierdo {
+    flex: 0 0 35%;
+    background-color: #0f1c24;
+    color: #ffffff;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    background-image: linear-gradient(to bottom right, #0f1c24, #1a3340);
+}
+
+.registro-izquierdo-contenido {
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.registro-izquierdo-contenido h3 {
+    font-size: 1.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #a8dadc;
+}
+
+.registro-izquierdo-contenido p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.registro-izquierdo-contenido ul {
+    list-style: none;
+    padding: 0;
+}
+
+.registro-izquierdo-contenido ul li {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto 15px auto;
+}
+
+.registro-izquierdo-contenido ul li i {
+    color: #21d4fd;
+    margin-right: 15px;
+    font-size: 1.3em;
+    min-width: 25px;
+    text-align: center;
+}
+
+.registro-imagen-decorativa {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ======== Contenedor Derecha (Formularios) ======== */
+/* Oculta formularios por defecto */
+.registro-derecho {
+    width: 50%;
+    /* Fondo oscuro y elegante con degradado sutil */
+    background: linear-gradient(135deg, #272727 0%, rgb(1, 1, 31) 50%, #272727 100%);
+    padding: 2.5rem 5rem; /* Ligeramente más padding para un look espacioso */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0 15px 15px 0; /* Bordes más redondeados en la derecha */
+    /* Sombra más profunda y profesional */
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease-in-out; /* Transición un poco más suave */
+    min-height: 550px; /* Asegura una altura mínima elegante */
+}
+
+.registro-derecho h3 {
+    font-size: 2.2rem; /* Título más prominente */
+    color: #E0E0E0; /* Blanco suave para alto contraste */
+    margin-bottom: 2rem; /* Más espacio debajo del título */
+    font-weight: 700; /* Más negrita */
+    text-align: center;
+    font-family: 'Montserrat', sans-serif; /* Fuente más moderna para títulos */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Sombra de texto sutil */
+}
+
+/* Ocultar los pasos no activos */
+.registro-paso {
+    display: none;
+    animation: fadeIn 0.10s ease-in-out; /* Animación un poco más lenta y suave */
+}
+
+.registro-paso.active {
+    display: block;
+}
+
+/* Campos de formulario */
+.form-campo {
+    margin-bottom: 1.5rem; /* Más espacio entre cada campo */
+}
+
+.form-campo label {
+    font-size: 0.95rem; /* Ligeramente más grande */
+    font-weight: 600; /* Más negrita */
+    color: #B0B0B0; /* Gris suave para etiquetas */
+    display: flex; /* Para permitir iconos junto a las etiquetas */
+    align-items: center; /* Centrar icono y texto */
+    margin-top: 0.5rem; /* Espacio entre la etiqueta y el input de arriba */
+    margin-bottom: 0.3rem; /* Más espacio entre la etiqueta y el input  de abajo*/
+}
+
+.form-campo label i {
+    margin-right: 8px; /* Espacio entre el icono y el texto de la etiqueta */
+    color: #1b99e2; /* Color principal de acento */
+    font-size: 1.1em; /* Tamaño del icono */
+}
+
+.form-campo input {
+    width: 100%;
+    padding: 0.9rem 1.2rem; /* Más padding para inputs más altos */
+    border: 1px solid #444; /* Borde más oscuro y definido */
+    border-radius: 10px; /* Bordes más redondeados */
+    font-size: 1rem;
+    color: #E0E0E0; /* Color de texto claro para los inputs */
+    background-color: #2F3E4C; /* Fondo oscuro para los inputs */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-sizing: border-box; /* Asegura que padding y border se incluyan en el ancho */
+}
+
+.form-campo input::placeholder {
+    color: #888; /* Color de placeholder sutil */
+    font-style: italic;
+}
+
+.form-campo input:focus {
+    border-color: #4CAF50; /* Verde de acento al enfocar */
+    outline: none;
+    background-color: #3A4E5C; /* Fondo ligeramente más claro al enfocar */
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3); /* Sombra de enfoque sutil */
+}
+
+/* Agrupación doble */
+.form-grupo-doble {
+    display: flex;
+    gap: 1.5rem; /* Más espacio entre los campos dobles */
+    flex-wrap: wrap;
+}
+
+.form-grupo-doble .form-campo {
+    flex: 1 1 48%; /* Mantiene la distribución */
+    margin-bottom: 0; /* Asegura que el gap del grupo lo controle */
+}
+
+/* Botones */
+.btn-siguiente,
+.btn-atras,
+.btn-confirmar,
+.btn-gmail { /* Añadimos .btn-gmail aquí para estilos base */
+    width: 100%;
+    padding: 1rem 1.5rem; /* Padding generoso */
+    border: none;
+    border-radius: 10px; /* Bordes más redondeados */
+    font-size: 1.05rem; /* Tamaño de fuente equilibrado */
+    font-weight: 700; /* Muy negrita */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-align: center;
+    text-transform: uppercase; /* Mayúsculas para los botones */
+    letter-spacing: 0.8px; /* Ligero espaciado entre letras */
+    margin-top: 1.5rem; /* Espacio antes de los botones */
+}
+
+/* Botones principales (Siguiente, Confirmar) */
+.btn-siguiente,
+.btn-confirmar {
+    background-color: #4CAF50; /* Verde principal */
+    color: white;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3); /* Sombra sutil */
+}
+
+.btn-siguiente:hover,
+.btn-confirmar:hover {
+    background-color: #43A047; /* Verde más oscuro al pasar el ratón */
+    transform: translateY(-2px); /* Efecto de levantamiento sutil */
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-siguiente:active,
+.btn-confirmar:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(76, 175, 80, 0.2);
+}
+
+/* Botón atrás */
+.btn-atras {
+    background-color: #555; /* Gris oscuro */
+    color: #E0E0E0; /* Texto blanco suave */
+    margin-top: 1rem; /* Un poco menos de margen si es el segundo botón */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-atras:hover {
+    background-color: #666; /* Gris ligeramente más claro al pasar el ratón */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-atras:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Texto antes del botón de Gmail */
+.registro-paso-1 form p.text-gmail-prompt { /* Cambié a <p> con clase para mejor semántica */
+    text-align: center;
+    margin-top: 1.5rem; /* Espacio antes del texto */
+    margin-bottom: 0.8rem; /* Espacio antes del botón de Google */
+    font-size: 0.9rem;
+    color: #B0B0B0; /* Gris suave */
+    font-weight: 500;
+}
+
+/* Botón de Gmail */
+.btn-gmail {
+    background-color: #DB4437; /* Rojo de Google */
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio entre icono y texto */
+    margin-top: 0; /* Ya el párrafo anterior tiene el margen */
+    box-shadow: 0 5px 15px rgba(219, 68, 55, 0.3);
+}
+
+.btn-gmail i {
+    font-size: 1.2em; /* Tamaño del icono de Google */
+}
+
+.btn-gmail:hover {
+    background-color: #C23321; /* Rojo más oscuro al pasar el ratón */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(219, 68, 55, 0.4);
+}
+
+.btn-gmail:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(219, 68, 55, 0.2);
+}
+
+/*Separador en formulario de datos personal y de usuario*/
+.separadorDatos {
+    align-items: center; /* Centra verticalmente el texto con las líneas */
+    text-align: center; /* Centra el texto si se desborda o si hay una sola línea */
+    font-size: 0.95rem; /* Tamaño de fuente para el texto del separador */
+    font-weight: 600; /* Negrita para el texto */
+    color: #B0B0B0; /* Color gris suave para el texto */
+    user-select: none; /* Evita que el texto sea seleccionable */
+}
+
+/* =========================================================
+ESTILOS ADICIONALES PARA VALIDACIÓN EN TIEMPO REAL (Formulario 2)
+--- SOLO LAS CLASES REQUERIDAS ---
+========================================================= */
+
+/* Estilos para el contenedor que envuelve input y el icono */
+/* Esto reemplaza o complementa el estilo de 'input-error' que tenías */
+.input-container {
+    position: relative; /* Necesario para posicionar el icono */
+    display: flex; /* Para alinear el input y el icono en la misma línea */
+    align-items: center; /* Centra verticalmente el input y el icono */
+    
+    /* Hereda o sobreescribe estilos de borde de tu input original */
+    border: 1px solid #444; /* Borde por defecto, más sutil */
+    border-radius: 8px; /* Mantén tu border-radius */
+    overflow: hidden; /* Asegura que el border-radius se aplique bien al contenido interno */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el cambio de estado */
+}
+
+/* Ajusta el input dentro de input-container */
+.input-container input {
+    flex-grow: 1; /* Permite que el input ocupe todo el espacio disponible */
+    border: none; /* ELIMINA el borde del input individual, ahora el borde lo tiene .input-container */
+    outline: none; /* Elimina el contorno al enfocar */
+    padding: 12px 15px; /* Mantén tu padding */
+    background-color: #1A2A3A; /* Fondo del input oscuro, consistente con tu tema */
+    color: #E0E0E0; /* Color del texto, consistente */
+    font-size: 1rem;
+    /* Si tienes más estilos para input, asegúrate de que no sobrescriban el border: none; */
+}
+
+/* Estilos de foco para el input dentro del contenedor */
+.input-container input:focus {
+    box-shadow: 0 0 0 3px rgba(33, 212, 253, 0.3); /* Sombra de foco azul/cian */
+}
+
+/* ESTADOS DE VALIDACIÓN */
+/* Cuando el campo tiene datos inválidos */
+.input-container.invalid {
+    border-color: #f44336; /* Rojo de error */
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.3); /* Sombra suave roja */
+}
+.input-container.invalid input:focus {
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.5); /* Sombra más fuerte al enfocar */
+}
+
+/* Cuando el campo tiene datos válidos */
+.input-container.valid {
+    border-color: #4CAF50; /* Verde de éxito */
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3); /* Sombra suave verde */
+}
+.input-container.valid input:focus {
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5); /* Sombra más fuerte al enfocar */
+}
+
+/* ICONOS DE VALIDACIÓN */
+.validation-icon {
+    width: 20px; /* Tamaño del icono */
+    height: 20px;
+    margin-right: 12px; /* Espacio entre el input y el icono */
+    flex-shrink: 0; /* Evita que el icono se encoja si el input es muy largo */
+    display: flex; /* Para centrar el SVG */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Icono de Error (Cruz) - Usando SVG Data URI */
+.validation-icon.error::before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f44336' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Icono de Válido (Checkmark) - Usando SVG Data URI */
+.validation-icon.success::before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234CAF50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Ocultar el icono por defecto si no tiene clase de estado */
+/* Esto asegura que no se muestre hasta que JS le añada 'success' o 'error' */
+.validation-icon:empty:not(.success):not(.error) {
+    display: none;
+}
+
+/* MENSAJES DE VALIDACIÓN */
+/* Esto reemplaza o complementa tu clase '.error-message' */
+.validation-message {
+    font-size: 0.85rem;
+    margin-top: 6px; /* Ajusta el espacio debajo del input */
+    text-align: left; /* Alinea los mensajes a la izquierda */
+    min-height: 18px; /* Para mantener el layout estable cuando el mensaje aparece/desaparece */
+    padding-left: 2px; /* Pequeño ajuste para la estética */
+}
+
+.validation-message.error-text {
+    color: #f44336; /* Rojo de error */
+    font-weight: 500;
+}
+
+.validation-message.success-text {
+    color: #4CAF50; /* Verde de éxito (puedes usar este para mensajes de "Campo válido") */
+    font-weight: 500;
+}
+
+/* Estilo para los iconos de Font Awesome dentro de las labels */
+.form-campo label i.fa-solid {
+    margin-right: 8px; /* Espacio entre el icono de Font Awesome y el texto de la label */
+    color: #00BFFF; /* Un azul cian que combine con tu tema */
+}
+
+@media (max-width: 900px) {
+    .contenedor-registrar {
+        flex-direction: column; /* Apila los contenedores */
+        max-width: 500px; /* Reduce el ancho máximo del contenedor principal en tablets */
+        min-height: auto; /* Permite que la altura se ajuste */
+        border-radius: 15px; /* Redondea todo el contenedor */
+    }
+
+    /* Responsive para Contenedor Izquierdo */
+    .registro-izquierdo {
+        flex: none; /* Desactiva el flex-grow/shrink/basis */
+        width: 100%; /* Ocupa todo el ancho */
+        padding: 30px; /* Reduce el padding */
+        border-radius: 10px 10px 0 0; /* Bordes redondeados en la parte superior */
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+        order: -1; /* Asegura que aparezca primero (arriba) */
+        min-height: auto;
+        gap: 15px;
+    }
+
+    .registro-izquierdo-contenido h3 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+    }
+
+    .registro-izquierdo-contenido p {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+
+    .registro-izquierdo-contenido ul li {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+        max-width: 300px;
+    }
+
+    .registro-izquierdo-contenido ul li i {
+        font-size: 1.2em;
+        margin-right: 10px;
+    }
+
+    .registro-imagen-decorativa {
+        max-width: 80%;
+        margin-bottom: 15px;
+    }
+
+    /* Responsive para Contenedor Derecho */
+    .registro-derecho {
+        width: 100%; /* Ocupa todo el ancho disponible */
+        padding: 2.5rem; /* Ajusta el padding en pantallas pequeñas */
+        border-radius: 0 0 15px 15px; /* Redondeo en la parte inferior */
+        min-height: auto; /* Permite que la altura se ajuste */
+    }
+
+    .registro-derecho h3 {
+        font-size: 1.9rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .registro-paso {
+        animation: fadeIn 0.5s ease-in-out;
+        max-width: 400px; /* Limita el ancho de los pasos internos en móvil */
+        padding: 0 1rem; /* Menos padding en los pasos para móviles */
+    }
+
+    .form-campo {
+        margin-bottom: 1rem;
+    }
+
+    .form-campo input {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .form-grupo-doble {
+        flex-direction: column; /* Apila los campos dobles */
+        gap: 0.8rem;
+    }
+
+    .form-grupo-doble .form-campo {
+        flex: 1 1 100%; /* Ocupa el 100% cuando se apilan */
+        margin-bottom: 0;
+    }
+
+    .btn-siguiente,
+    .btn-atras,
+    .btn-confirmar,
+    .btn-gmail {
+        padding: 0.9rem 1.2rem;
+        font-size: 0.95rem;
+        margin-top: 1.2rem;
+        max-width: 100%; /* Asegura que los botones ocupen el 100% en móvil */
+    }
+
+    .registro-paso-1 form p.text-gmail-prompt {
+        margin-top: 1.2rem;
+        margin-bottom: 0.6rem;
+        max-width: 100%; /* Asegura que el texto ocupe el 100% */
+    }
+
+    .separadorDatosP,
+    .separadorDatosU {
+        font-size: 0.9em;
+        margin: 2rem 0 1.5rem 0;
+        max-width: 100%; /* Asegura que el separador ocupe el 100% en móvil */
+    }
+}
+
+@media (max-width: 500px) {
+    .registro-derecho {
+        padding: 1.5rem;
+    }
+
+    .registro-derecho h3 {
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .registro-izquierdo {
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .registro-izquierdo-contenido h3 {
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+    }
+
+    .registro-izquierdo-contenido p {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+
+    .registro-izquierdo-contenido ul li {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        max-width: 280px;
+    }
+
+    .registro-izquierdo-contenido ul li i {
+        font-size: 1.1em;
+        margin-right: 8px;
+    }
+
+    .registro-imagen-decorativa {
+        max-width: 70%;
+        margin-bottom: 10px;
+    }
+}

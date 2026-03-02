@@ -1,0 +1,235 @@
+/* ==================================== */
+/* 1. SECCIÓN DE HORARIOS (Base Profesional) */
+/* ==================================== */
+
+.seccion-horarios {
+    margin-top: 60px;
+    /* Fondo limpio y profesional (Azul oscuro sutil) */
+    background-color: #f4f7f6;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.titulo-seccion-horarios {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.8em;
+    color: #1d3557;
+    /* Azul Oscuro (Navy Blue) */
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    animation: colorChange 5s infinite;
+}
+
+/*Animacion movimiento del titulo y cambio de color suave*/
+@keyframes colorChange {
+    0% {
+        color: #1d3557;
+    }
+
+    /* Azul Oscuro (Navy Blue) */
+    50% {
+        color: #457b9d;
+    }
+
+    /* Azul Medio */
+    100% {
+        color: #1d3557;
+    }
+
+    /* Azul Oscuro (Navy Blue) */
+}
+
+.contenedor-tarjeta-horarios {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.tarjeta-horario {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    /* Fondo blanco */
+    border-radius: 12px;
+    /* Sombra elegante y sutil */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 1000px;
+    width: 100%;
+    /* Permite desplazamiento horizontal solo si la tabla es demasiado ancha */
+    overflow-x: auto;
+}
+
+.titulo-tarjeta-horario {
+    font-size: 2em;
+    color: #457b9d;
+    /* Azul Medio */
+    margin-bottom: 30px;
+    font-weight: 600;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+/* ==================================== */
+/* 2. ESTILOS DE TABLA (Escritorio) */
+/* ==================================== */
+
+.tarjeta-horario table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+    /* Permite que el contenido determine el ancho de las columnas */
+}
+
+/* Encabezado */
+.tarjeta-horario thead th {
+    background-color: #1d3557;
+    /* Azul Oscuro (Color primario) */
+    color: #f1faee;
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.95em;
+}
+
+/* Filas y Celdas */
+.tarjeta-horario tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.tarjeta-horario tbody tr:hover {
+    background-color: #e6f7ff;
+    /* Hover sutil en azul claro */
+}
+
+.tarjeta-horario tbody td {
+    padding: 15px 20px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+}
+
+/* Colores de Turno para la primera columna */
+.turno-manana {
+    background-color: #f7f9fd;
+    /* Fondo de Turno muy sutil */
+    color: #457b9d;
+    font-weight: bold;
+    text-align: center;
+}
+
+.turno-tarde {
+    background-color: #fff9f5;
+    color: #e63946;
+    /* Rojo de acento */
+    font-weight: bold;
+    text-align: center;
+}
+
+.turno-noche {
+    background-color: #f3f3f5;
+    color: #1d3557;
+    font-weight: bold;
+    text-align: center;
+}
+
+.nota-horario {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #6c757d;
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* ==================================== */
+/* 3. RESPONSIVE (Móviles) */
+/* ==================================== */
+
+@media (max-width: 768px) {
+    .seccion-horarios {
+        padding: 40px 10px;
+    }
+
+    /* El contenedor de la tarjeta ya tiene overflow-x: auto; en el CSS anterior.
+       Si prefieres el modo "Tarjeta-por-fila" para móviles, usa esto: */
+
+    /* Ocultar encabezados de tabla */
+    .tarjeta-horario table,
+    .tarjeta-horario thead,
+    .tarjeta-horario tbody,
+    .tarjeta-horario th,
+    .tarjeta-horario td,
+    .tarjeta-horario tr {
+        display: block;
+    }
+
+    .tarjeta-horario thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    /* Filas como bloques/tarjetas */
+    .tarjeta-horario tbody tr {
+        border: 1px solid #e0e0e0;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 0;
+        /* Elimina el padding de la fila */
+    }
+
+    /* Celdas como pares clave-valor */
+    .tarjeta-horario tbody td {
+        border-bottom: 1px solid #f0f0f0;
+        position: relative;
+        padding-left: 120px;
+        /* Espacio para la etiqueta */
+        text-align: right;
+    }
+
+    .tarjeta-horario tbody td:last-child {
+        border-bottom: none;
+    }
+
+    /* Etiquetas usando pseudo-elementos (basado en el orden de las columnas) */
+    .tarjeta-horario tbody td:nth-of-type(2)::before {
+        content: "Horario:";
+        font-weight: bold;
+        color: #1d3557;
+        position: absolute;
+        left: 15px;
+    }
+
+    .tarjeta-horario tbody td:nth-of-type(3)::before {
+        content: "Actividades:";
+        font-weight: bold;
+        color: #1d3557;
+        position: absolute;
+        left: 15px;
+    }
+
+    /* Ajuste de Turno (la celda con rowspan) */
+    .turno-manana,
+    .turno-tarde,
+    .turno-noche {
+        display: block;
+        text-align: center;
+        padding: 10px;
+        font-size: 1.1em;
+        /* Revertir estilos de celda normal */
+        padding-left: 10px !important;
+        background-color: #457b9d !important;
+        color: #f1faee !important;
+        border-radius: 8px 8px 0 0;
+        margin-bottom: 0;
+    }
+
+    /* Ocultar la pseudo-etiqueta en la celda de Turno */
+    .tarjeta-horario tbody td:nth-of-type(1)::before {
+        content: none;
+    }
+}

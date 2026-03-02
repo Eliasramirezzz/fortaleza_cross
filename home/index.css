@@ -1,0 +1,168 @@
+/*==========================General==========================*/
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Oculta cualquier scroll horizontal */
+}
+@font-face { /*Letras los titulos*/
+    font-family: 'titulos';
+    src: url('../data/tahomabd.ttf') format('truetype'); 
+}
+
+/*==========================Diseño del home==========================*/
+
+
+/*======================== Contenedor del Botón Flotante =============================*/
+.whatsapp-float-btn {
+    /* Claves para la posición flotante en la esquina inferior derecha */
+    position: fixed;
+    bottom: 25px; /* Separación del borde inferior */
+    right: 25px; /* Separación del borde derecho */
+    
+    z-index: 1000;
+    cursor: pointer;
+    text-decoration: none; /* Elimina cualquier subrayado del enlace */
+    /* Mantenemos la sombra y los bordes para el estilo */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border-radius: 50%; /* Hacemos el contenedor circular para mejor diseño */
+    transition: transform 0.3s ease-in-out;
+}
+
+.whatsapp-float-btn:hover {
+    transform: scale(1.05); /* Ligerísimo zoom al pasar el mouse */
+}
+
+/* Estilos de la imagen del icono */
+.ico_what {
+    width: 55px; /* Tamaño base del icono */
+    height: 55px;
+    border-radius: 50%;
+    /* Mantenemos el borde y el fondo oscuro si lo deseas */
+    background: #17202a; 
+    border: 3px solid rgb(147, 255, 183);
+    box-shadow: 0 0 0 0 rgba(147, 255, 183, 0.7); /* Sombra para el efecto de pulso */
+    animation: pulseGlow 2s infinite, heartbeat 1.5s infinite; /* Combina ambas animaciones */
+}
+
+
+/* === Animación de Pulso (Sutil) === */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(147, 255, 183, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(147, 255, 183, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(147, 255, 183, 0);
+    }
+}
+
+/* === Animación Heartbeat (Movimiento sutil) === */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03); /* Movimiento sutil para no desplazar */
+    }
+}
+
+/* =========================================================
+    RESPONSIVE: Ajustes para Móviles
+========================================================= */
+
+@media (max-width: 600px) {
+    .whatsapp-float-btn {
+        bottom: 15px; /* Más cerca del borde en móviles */
+        right: 15px;
+    }
+    .ico_what {
+        width: 50px; /* Un poco más pequeño en móviles */
+        height: 50px;
+    }
+}
+
+/*--------------------------Presentacions--------------------------*/
+/* Estilos para la sección de presentación */
+.presentacion_fc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Ajusta la altura mínima para que ocupe gran parte de la ventana */
+    padding: 2rem;
+    color: #f5f5f5; /* Color de texto principal blanco suave */
+    background: linear-gradient(120deg,#272727, rgb(1, 1, 31), #272727);
+    font-family: 'titulos';
+    text-align: center;
+    overflow: hidden; /* Asegura que las animaciones no creen barras de desplazamiento */
+    position: relative; /* Para posibles elementos superpuestos o efectos */
+}
+
+/* Estilos para el título principal */
+.bienvenidos {
+     font-size: 2.5rem; /* Tamaño de fuente grande para el título */
+    font-weight: 900; /* Negrita extra para impacto */
+    margin-bottom: 1.5rem;
+    text-transform: uppercase; /* Mayúsculas para el título */
+    letter-spacing: 3px; /* Espaciado entre letras */
+    background: linear-gradient(90deg, #007bff, #f5f5f5, #333333, #8c8c8c); /* Degradado inicial */
+    background-size: 200% 100%; /* Duplica el tamaño para el efecto de barrido */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: sweep-gradient 6s linear infinite alternate; /* Animación de barrido suave */
+}
+/* Animación de barrido para el degradado del título */
+@keyframes sweep-gradient {
+    0% {
+        background-position: 0% 50%; /* Empieza a la izquierda */
+    }
+    100% {
+        background-position: 100% 50%; /* Termina a la derecha */
+    }
+}
+
+/* Estilos para el texto de presentación */
+.text_presentacion {
+    font-family: 'Open Sans', sans-serif; /* Fuente moderna y limpia para el párrafo */
+    font-size: 1.25rem; /* Tamaño de fuente cómodo para la lectura */
+    line-height: 1.8; /* Espaciado de línea para mejor legibilidad */
+    max-width: 800px; /* Ancho máximo para el texto */
+    margin: 0 auto; /* Centrar el bloque de texto */
+    padding: 0 1rem; /* Pequeño padding horizontal */
+    text-align: justify; /* **Justificado para una apariencia limpia** */
+    font-weight: normal; /* Asegura que no tenga negrita */
+    opacity: 0; /* Inicialmente invisible para la animación */
+    animation: fadeInText 2s ease-out 1s forwards; /* Aparece después del título */
+}
+
+/* Animación para que el texto aparezca suavemente */
+@keyframes fadeInText {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .bienvenidos {
+        font-size: 3rem; /* Reduce el tamaño del título en pantallas más pequeñas */
+    }
+
+    .text_presentacion {
+        font-size: 1.1rem; /* Reduce el tamaño del texto en pantallas más pequeñas */
+        padding: 0 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bienvenidos {
+        font-size: 2.2rem; /* Aún más pequeño en móviles */
+        letter-spacing: 1px;
+    }
+
+    .text_presentacion {
+        font-size: 1rem; /* Texto aún más pequeño */
+    }
+}

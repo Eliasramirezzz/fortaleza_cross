@@ -1,0 +1,265 @@
+/* =========================================================
+ESTILOS PARA EL CONTENEDOR DE ESTADO DE SUSCRIPCIÓN
+========================================================= */
+
+/* Estilo para la sección principal del estado de suscripción */
+.container-estado-suscripcion {
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23); /* Fondo oscuro, similar al resto de tu diseño */
+    color: #E0E0E0; /* Color de texto claro */
+    font-family: 'Poppins', sans-serif;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin: 10px auto; /* Centrado y con margen */
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    align-items: center;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+}
+
+/* Estilos para los div de "estado-nombre" y "estado-plan" */
+.estado-nombre,
+.estado-plan {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el label y el valor */
+}
+
+/* Estilos para los valores (Juan Pérez y Al día/Vencido) */
+.estado-nombre .ENvalor{
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.estado-nombre .ENvalor:hover{
+    color: #00BFFF;
+}
+
+.estado-plan .label{
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* estilo base para la etiqueta de estado */
+.estado-plan .valor.estado {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color .2s, color .2s;
+}
+
+/* Estilos específicos para el estado activo (Al día) */
+.estado-plan .valor.estado.activo {
+    color: white;
+    background-color: rgba(31, 224, 37, 0.8);
+}
+
+/* Estilos específicos para el estado vencido */
+.estado-plan .valor.estado.vencido {
+    color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 600px) {
+    .container-estado-suscripcion {
+        flex-direction: column; /* Apila los elementos verticalmente */
+        align-items: flex-start; /* Alinea los elementos a la izquierda */
+        padding: 15px;
+        gap: 15px; /* Espacio entre los elementos apilados */
+    }
+}
+
+
+/* =========================================================
+ESTILOS DEL MODAL PROFESIONAL
+========================================================= */
+
+/* Contenedor principal del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; /* Permite el scroll dentro del modal si es necesario */
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+}
+
+/* Contenido del modal */
+.modal-content {
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    color: #E0E0E0;
+    font-family: 'Poppins', sans-serif;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animación del borde con brillo de colores */
+@keyframes glowingBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00BFFF, #4CAF50, #00BFFF);
+    background-size: 400% 400%;
+    z-index: -1;
+    border-radius: 14px;
+    opacity: 0.7;
+    animation: glowingBorder 3s ease infinite;
+}
+
+/* Encabezado del modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(176, 196, 222, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Título con animación y estilo mejorado */
+@keyframes pulseTitle {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.modal-title {
+    font-family: 'Container-Title', sans-serif;
+    color: #00BFFF;
+    margin: 0;
+    font-size: 2rem;
+    animation: pulseTitle 2s ease-in-out infinite;
+}
+
+/* Botón de cierre */
+.close-btn {
+    color: #FF6347;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #FF4500;
+    transform: rotate(90deg);
+}
+
+/* Cuerpo del modal y grupos de información */
+.modal-body {
+    line-height: 1.8;
+}
+
+.info-group {
+    margin-bottom: 15px; /* Reducción de 15px */
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.info-group:last-of-type {
+    margin-bottom: 0; /* Elimina el margen del último grupo para evitar espacio extra */
+}
+
+.info-group:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.info-group strong {
+    color: #B0C4DE;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-group span {
+    color: #E0E0E0;
+    font-size: 1.1rem;
+}
+/*Diseño para el titulo del plan*/
+#TitlePlan{
+    background: linear-gradient(105deg, #00BFFF, #0a0a23, #00BFFF);
+    color:  black;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #4a6584, transparent);
+    margin: 30px 0;
+}
+
+/* Estilos para el estado del plan */
+.estado {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: transform 0.3s ease;
+}
+
+.estado:hover {
+    transform: scale(1.1);
+}
+
+.estado.activo {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+}
+
+.estado.inactivo {
+    background-color: rgba(238, 56, 75, 0.2);
+    color: #dc3545;
+}
+
+/* Transición de entrada (a ser activada por JS) */
+.modal-show {
+    animation: fadeInScale 0.4s ease-out;
+    display: block;
+}
+/* Bloquea el scroll de la página cuando el modal está activo */
+.no-scroll {
+    overflow: hidden;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

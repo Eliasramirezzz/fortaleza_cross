@@ -1,0 +1,334 @@
+/*Para el titulo de los contenedores*/
+@font-face {
+    font-family: 'Container-Title';
+    src: url('../../data/tahomabd.ttf') format('truetype');
+}
+
+/* ========================================================= */
+/* ESTILOS GENERALES (GestSocio.css)                       */
+/* ========================================================= */
+
+body {
+    font-family: 'Container-Title';
+    /* O la fuente que uses en tu proyecto */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #0a0a23, #1e1e3f 70%, #0a0a23);
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* 🔹 Encabezado */
+.header-container {
+    background-color: rgba(10, 10, 35, 0.8);
+    /* Fondo semi-transparente oscuro */
+    padding: 15px 30px;
+    text-align: center;
+    border-bottom: 2px solid #4dc3ff;
+    /* Línea azul claro */
+    margin-bottom: 30px;
+}
+
+.header-container h1 {
+    margin: 0;
+    color: #00BFFF;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* 🔹 Contenedor de Mensajes */
+.mensaje {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    display: none;
+    /* Oculto por defecto, JS lo muestra */
+}
+
+.mensaje.success {
+    background-color: #4CAF50;
+    /* Verde */
+    color: #0a0a23;
+}
+
+.mensaje.error {
+    background-color: #f44336;
+    /* Rojo */
+    color: white;
+}
+
+.mensaje.info {
+    background-color: #2196F3;
+    /* Azul */
+    color: white;
+}
+
+/* ========================================================= */
+/* SECCIÓN CAMBIAR FOTO                                    */
+/* ========================================================= */
+
+.cambiar-foto {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que se apilen en pantallas pequeñas */
+    gap: 30px;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: rgba(26, 36, 48, 0.9);
+    /* Fondo oscuro para la sección */
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.foto-actual,
+.subir-foto {
+    flex: 1;
+    /* Ocupan espacio disponible */
+    min-width: 300px;
+    /* Ancho mínimo antes de apilarse */
+    text-align: center;
+}
+
+.foto-actual h3,
+.subir-foto h3 {
+    color: #4dc3ff;
+    /* Azul claro para subtítulos */
+    margin-bottom: 15px;
+    border-bottom: 1px solid #334454;
+    padding-bottom: 10px;
+}
+
+/* Estilos de las imágenes de previsualización */
+#previewActual,
+#previewNueva {
+    width: 150px;
+    /* Tamaño consistente */
+    height: 150px;
+    border-radius: 50%;
+    /* Circular */
+    object-fit: cover;
+    /* Asegura que la imagen cubra el círculo sin distorsionarse */
+    border: 3px solid #4dc3ff;
+    /* Borde azul */
+    background-color: #334454;
+    /* Fondo si la imagen no carga */
+    margin-bottom: 20px;
+}
+
+#previewContainer {
+    min-height: 176px;
+    /* Altura de la imagen + borde + margen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------------------------------ */
+/* Formulario de Subida                 */
+/* ------------------------------------ */
+#formFoto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Estilo para ocultar el input file por defecto */
+#nueva_foto {
+    display: none;
+}
+
+/* Estilo del botón falso (label) */
+.label-file {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #4dc3ff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.label-file:hover {
+    background: linear-gradient(135deg, #4dc3ff, rgb(124, 124, 138) 50%, #0a0a23), #4dc3ff;
+}
+
+/* Botón para guardar */
+.btn-guardar {
+    padding: 10px 20px;
+    border: 2px solid #4dc3ff;
+    /* Borde con el mismo azul que el título */
+    background-color: transparent;
+    /* Transparente para el fondo oscuro */
+    color: #4dc3ff;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-guardar:hover {
+    filter: brightness(1.1);
+    background-color: #4dc3ff;
+    color: #0a0a23;
+    transform: scale(1.05);
+}
+
+/* ========================================================= */
+/* MODAL DE CONFIRMACIÓN                                   */
+/* ========================================================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Estilo para mostrar el modal */
+.modal:not([style*="display: none"]) {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #1e1e3f;
+    /* Azul oscuro */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+/* Animación de entrada del contenido del modal */
+.modal:not([style*="display: none"]) .modal-content {
+    transform: scale(1);
+}
+
+.modal-content p {
+    color: #e0e0e0;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.modal-content button:hover {
+    transform: translateY(-2px);
+}
+
+.btn-confirmar {
+    /* Reutilizamos la clase de guardar */
+    background: linear-gradient(90deg, #00c853, #00bfa5);
+    color: #0a0a23;
+}
+
+.btn-cancelar {
+    background-color: #757575;
+    /* Gris */
+    color: white;
+    padding: 10px 15px;
+}
+
+.btn-cancelar:hover {
+    background-color: #5a5a5a;
+}
+
+/* Btn flotante volver atras */
+.btn-volver {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: 2px solid #4dc3ff;
+    /* Borde con el mismo azul que el título */
+    color: #4dc3ff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.2s;
+    z-index: 1002;
+    cursor: pointer;
+    animation: glow 2s infinite alternate;
+}
+
+.btn-volver:hover {
+    background-color: #4dc3ff;
+    color: #0a0a23;
+    transform: translateY(-2px);
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px #4dc3ff, 0 0 10px #4dc3ff, 0 0 18px #4dc3ff;
+    }
+
+    50% {
+        box-shadow: 0 0 10px #4dc3ff, 0 0 25px #4dc3ff, 0 0 24px #4dc3ff;
+    }
+}
+
+/* ========================================================= */
+/* RESPONSIVIDAD                                           */
+/* ========================================================= */
+
+@media (max-width: 768px) {
+    .cambiar-foto {
+        flex-direction: column;
+        /* Apila las secciones */
+        padding: 20px;
+    }
+
+    .header-container h1 {
+        font-size: 1.5rem;
+    }
+
+    #previewActual,
+    #previewNueva {
+        width: 120px;
+        height: 120px;
+    }
+
+    #previewContainer {
+        min-height: 146px;
+    }
+
+    .modal-content button {
+        padding: 8px 15px;
+        margin: 5px;
+    }
+
+    /*Arriba ala izquierda debajo del titulo*/
+    .btn-volver {
+        top: 80px;
+        left: 10px;
+    }
+}

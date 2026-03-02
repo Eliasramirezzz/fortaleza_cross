@@ -1,0 +1,92 @@
+.seccion-ubicacion {
+    margin-top: 60px;
+    padding: 60px 20px;
+    background: linear-gradient(120deg, #494848da, #ebe8e8, #a8a6a6da,#ebe8e8,#c5c2c2, #494848da,#c5c2c2); /* Un fondo claro para la sección */
+    color: #1b2631;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.titulo-seccion-ubicacion {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #1b2631;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 30px; /* Espacio debajo del título */
+    text-transform: uppercase; /* Opcional: para que el título sea en mayúsculas */
+    letter-spacing: 1.5px; /* Opcional: espaciado entre letras */
+}
+
+.info-direccion {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.nombre-localidad {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.direccion-gym {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+.direccion-gym:hover {
+    font-size: 1.2rem;
+    color: rgb(38, 38, 156);
+    text-decoration: underline;
+}
+
+/* Contenedor horizontal para imagen y mapa */
+.contenedor-flex-ubicacion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+/* Imagen del gym */
+.imagen-gym {
+    flex: 1 1 400px;
+    max-width: 500px;
+}
+
+.imagen-gym img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.imagen-gym img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Mapa */
+.contenedor-mapa {
+    flex: 1 1 400px;
+    height: 480px;
+    max-width: 700px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Horarios */
+.horarios-gym {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.texto-horario {
+    font-size: 1.1rem;
+    background-color: #1b2631;
+    color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+}

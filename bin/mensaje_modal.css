@@ -1,0 +1,243 @@
+/*=========================MODAL OVERLAY & CONTENT BASE STYLES=========================*/
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Asegura que esté por encima de todo */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    backdrop-filter: blur(5px); /* Efecto de desenfoque moderno */
+    -webkit-backdrop-filter: blur(5px); /* Compatibilidad con Safari */
+}
+
+.custom-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.custom-modal-content {
+    background-color: #0a0a23; /* Fondo oscuro, como tu tema */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); /* Sombra para profundidad */
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    transform: translateY(-50px) scale(0.95); /* Para la animación de entrada */
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative;
+    border: 1px solid rgba(0, 191, 255, 0.2); /* Borde sutil azul */
+    font-family: 'Poppins', sans-serif;
+    color: #e0e0e0;
+}
+
+.custom-modal-overlay.active .custom-modal-content {
+    transform: translateY(0) scale(1); /* Animación de entrada */
+    opacity: 1;
+}
+
+/* Estilos comunes para los modales individuales (ocultos por defecto) */
+/* NOTA: Ahora el 'display: none' se maneja directamente por JS y luego se inserta solo el necesario */
+.custom-modal {
+    /* Aquí no lleva display:none; por defecto, ya que JS lo inserta. */
+    /* Asegúrate que las transiciones o animaciones de entrada del modal se controlen por la clase active del overlay */
+}
+
+
+/*=========================MODAL COMMON ELEMENTS=========================*/
+.modal-icon-wrapper {
+    margin-bottom: 25px;
+    width: 80px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-icon {
+    width: 100%;
+    height: 100%;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    display: block;
+}
+.modal-title {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+.modal-message {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: #cccccc;
+}
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+.modal-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/*=========================MODAL TYPE SPECIFIC STYLES & ANIMATIONS=========================*/
+
+/* Success Modal */
+.custom-modal-success .modal-title { color: #4CAF50; text-shadow: 0 0 8px rgba(76, 175, 80, 0.6); } /* Verde éxito */
+.custom-modal-success .modal-button-success { background-color: #4CAF50; color: white; box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4); }
+.custom-modal-success .modal-button-success:hover { background-color: #45a049; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(76, 175, 80, 0.6); }
+
+.custom-modal-success .checkmark__circle { stroke-dasharray: 166; stroke-dashoffset: 166; stroke-width: 2; stroke-miterlimit: 10; stroke: #4CAF50; fill: none; animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
+.custom-modal-success .checkmark__check { transform-origin: 50% 50%; stroke-dasharray: 48; stroke-dashoffset: 48; animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards; stroke: #fff; } /* Checkmark blanco sobre verde */
+
+/* Error Modal */
+.custom-modal-error .modal-title { color: #f44336; text-shadow: 0 0 8px rgba(244, 67, 54, 0.6); } /* Rojo error */
+.custom-modal-error .modal-button-error { background-color: #f44336; color: white; box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4); }
+.custom-modal-error .modal-button-error:hover { background-color: #d32f2f; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(244, 67, 54, 0.6); }
+
+.custom-modal-error .cross__circle { stroke-dasharray: 166; stroke-dashoffset: 166; stroke-width: 2; stroke-miterlimit: 10; stroke: #f44336; animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
+.custom-modal-error .cross__path { transform-origin: 50% 50%; stroke-dasharray: 48; stroke-dashoffset: 48; animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards; stroke: #f44336; }
+
+/* Warning Modal */
+.custom-modal-warning .modal-title { color: #ffc107; text-shadow: 0 0 8px rgba(255, 193, 7, 0.6); } /* Amarillo advertencia */
+.custom-modal-warning .modal-button-warning { background-color: #ffc107; color: #333; box-shadow: 0 4px 10px rgba(255, 193, 7, 0.4); }
+.custom-modal-warning .modal-button-warning:hover { background-color: #e0a800; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255, 193, 7, 0.6); }
+
+.custom-modal-warning .warning__circle { stroke-dasharray: 144; stroke-dashoffset: 144; stroke-width: 2; stroke-miterlimit: 10; stroke: #ffc107; animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
+.custom-modal-warning .warning__line { transform-origin: 50% 50%; stroke-dasharray: 15; stroke-dashoffset: 15; animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards; stroke: #ffc107; }
+.custom-modal-warning .warning__dot { transform-origin: 50% 50%; stroke-dasharray: 10; stroke-dashoffset: 10; animation: stroke 0.1s cubic-bezier(0.65, 0, 0.45, 1) 1.1s forwards; stroke: #ffc107; fill: #ffc107; }
+
+/* Info Modal */
+.custom-modal-info .modal-title { color: #2196F3; text-shadow: 0 0 8px rgba(33, 150, 243, 0.6); } /* Azul info */
+.custom-modal-info .modal-button-info { background-color: #2196F3; color: white; box-shadow: 0 4px 10px rgba(33, 150, 243, 0.4); }
+.custom-modal-info .modal-button-info:hover { background-color: #1976d2; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(33, 150, 243, 0.6); }
+
+.custom-modal-info .info__circle { stroke-dasharray: 166; stroke-dashoffset: 166; stroke-width: 2; stroke-miterlimit: 10; stroke: #2196F3; animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
+.custom-modal-info .info__line { transform-origin: 50% 50%; stroke-dasharray: 20; stroke-dashoffset: 20; animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards; stroke: #2196F3; }
+.custom-modal-info .info__dot { transform-origin: 50% 50%; stroke-dasharray: 10; stroke-dashoffset: 10; animation: stroke 0.1s cubic-bezier(0.65, 0, 0.45, 1) 1.1s forwards; stroke: #2196F3; fill: #2196F3; }
+
+/* Confirm Modal */
+.custom-modal-confirm .modal-title { color: #00BFFF; text-shadow: 0 0 8px rgba(0, 191, 255, 0.6); } /* Azul de tu tema */
+.custom-modal-confirm .modal-button-confirm-yes { background-color: #00BFFF; color: white; box-shadow: 0 4px 10px rgba(0, 191, 255, 0.4); }
+.custom-modal-confirm .modal-button-confirm-yes:hover { background-color: #0099CC; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 191, 255, 0.6); }
+.custom-modal-confirm .modal-button-confirm-no { background-color: #555; color: white; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); }
+.custom-modal-confirm .modal-button-confirm-no:hover { background-color: #444; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6); }
+
+/* SVG Animations (shared by all checkmark, cross, warning, info, question icons) */
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Estilos para el modal de carga */
+.loading-modal-content {
+    /* El modal de carga puede ser ligeramente más compacto o simplemente mantener el tamaño estándar */
+    max-width: 320px; /* Un poco más estrecho para la carga */
+    padding: 25px;
+}
+
+.loading-modal-content .modal-title {
+    font-size: 1.5rem; /* Título un poco más pequeño para cargando */
+    color: #00BFFF; /* Un azul claro para el título de "Espere por favor" */
+    margin-bottom: 20px;
+}
+
+.loading-modal-content .modal-message {
+    font-size: 0.95rem; /* Mensaje más pequeño y discreto */
+    color: #B0B0B0; /* Gris suave */
+    margin-top: 20px; /* Más espacio entre el loader y el mensaje */
+    margin-bottom: 0; /* Sin margen inferior, ya que no hay botones */
+}
+
+/* Contenedor de la animación del loader */
+.loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0; /* Espacio alrededor del loader */
+    width: 100%;
+}
+
+/* La animación del loader (un spinner de doble anillo) */
+.loader {
+    display: inline-block;
+    width: 60px; /* Tamaño del loader */
+    height: 60px;
+    border: 5px solid rgba(255, 255, 255, 0.2); /* Borde claro y semitransparente */
+    border-radius: 50%; /* Lo hace circular */
+    border-top-color: #4CAF50; /* Color principal del spinner (verde de acento) */
+    border-bottom-color: #21d4fd; /* Segundo color de acento (azul) */
+    animation: spin 1s linear infinite; /* Animación de giro */
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5), 0 0 20px rgba(33, 212, 253, 0.4); /* Sombra brillante */
+}
+
+/* Animación de giro */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==================== Responsive para el Modal de Cargando ==================== */
+@media (max-width: 600px) {
+    .loading-modal-content {
+        max-width: 280px;
+        padding: 20px;
+    }
+
+    .loading-modal-content .modal-title {
+        font-size: 1.4rem;
+    }
+
+    .loading-modal-content .modal-message {
+        font-size: 0.9rem;
+    }
+
+    .loader {
+        width: 50px; /* Reduce el tamaño del loader en móviles */
+        height: 50px;
+        border-width: 4px; /* Reduce el grosor del borde */
+    }
+}
+
+@media (max-width: 400px) {
+    .loading-modal-content {
+        max-width: 240px;
+        padding: 15px;
+    }
+
+    .loading-modal-content .modal-title {
+        font-size: 1.3rem;
+    }
+
+    .loading-modal-content .modal-message {
+        font-size: 0.85rem;
+    }
+
+    .loader {
+        width: 40px; /* Aún más pequeño en pantallas muy chicas */
+        height: 40px;
+        border-width: 3px;
+    }
+}

@@ -1,0 +1,166 @@
+@font-face {
+    /*Letras para los nav*/
+    font-family: 'Nav';
+    src: url('../../data/tahomabd.ttf') format('truetype');
+}
+
+/* =========================================================
+MODAL GENERAL (Contenedor Oscuro de Fondo)
+========================================================= */
+.modalPago {
+    display: none;
+    /* Oculto por defecto */
+    position: fixed;
+    z-index: 2000;
+    /* Asegura que esté por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(4, 3, 11, 0.7);
+    /* Fondo semi-transparente y oscuro */
+}
+
+/* Estilo para bloquear el scroll en el body */
+.modal-open {
+    overflow: hidden;
+}
+
+/* =========================================================
+CONTENIDO DEL MODAL (Caja Principal)
+========================================================= */
+.modal-content-pago {
+    background-color: #17202a;
+    /* Fondo oscuro principal */
+    margin: 10% auto;
+    /* Centrado y separado de la parte superior */
+    padding: 10px;
+    border-radius: 12px;
+    width: 90%;
+    /* Ancho en móvil */
+    max-width: 700px;
+    /* Ancho máximo en escritorio */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Borde sutil */
+    color: white;
+    /* Texto claro */
+    position: relative;
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+}
+
+/* Título del Modal */
+.modal-content-pago h2 {
+    font-family: 'Nav';
+    color: #00BFFF;
+    /* Verde brillante para el título, asociado a "pago" */
+    border-bottom: 2px solid #00BFFF;
+    margin-bottom: 5px;
+    font-size: 1.8rem;
+    text-align: center;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+/*Animacion para el titulo que se ilumine y apage*/
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px #21ecff;
+    }
+
+    50% {
+        text-shadow: 0 0 20px #21ecff;
+    }
+
+    100% {
+        text-shadow: 0 0 10px #21ecff;
+    }
+}
+
+/* Botón de Cerrar (X) */
+.closePago {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.closePago:hover,
+.closePago:focus {
+    color: #FF6347;
+    /* Rojo/Naranja para indicar acción de cerrar */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* =========================================================
+   3. ELEMENTOS DE FORMULARIO
+   ========================================================= */
+/* Estilo para el SELECT y TEXTAREA */
+.modal-content-pago textarea,
+.modal-content-pago select {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 0;
+    display: inline-block;
+    border: 1px solid #334454;
+    /* Borde oscuro */
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #0d1218;
+    /* Fondo más oscuro para el input */
+    color: white;
+    font-size: 1rem;
+    resize: vertical;
+    /* Permite redimensionar solo verticalmente el textarea */
+    /* Transiciones de enfoque */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.modal-content-pago textarea:focus,
+.modal-content-pago select:focus {
+    border-color: #4CAF50;
+    /* Borde verde al enfocar */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    outline: none;
+}
+
+/* Estilo para el botón Enviar */
+#enviarPago {
+    background: linear-gradient(105deg, #00BFFF, #0a0a23, #00BFFF);
+    color: white;
+    padding: 12px 20px;
+    margin: 20px 0 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#enviarPago:hover {
+    background: linear-gradient(105deg, #01546f, #2c2c3e, #01546f);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   4. RESPONSIVE (Ajuste para Móviles)
+   ========================================================= */
+
+@media (max-width: 600px) {
+    .modal-content-pago {
+        margin: 5% auto;
+        /* Más arriba en pantallas pequeñas */
+        padding: 20px;
+        width: 95%;
+        /* Ocupa más ancho en móviles */
+    }
+}

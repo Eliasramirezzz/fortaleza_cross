@@ -1,0 +1,160 @@
+/* =========================================================
+   1. MODAL GENERAL (Contenedor de Fondo Oscuro)
+   ========================================================= */
+.modal-detalle {
+    display: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    position: fixed;
+    inset: 0; /* Equivalente a top: 0; right: 0; bottom: 0; left: 0; */
+    background: rgba(0, 0, 0, 0.85); /* Fondo oscuro más denso */
+    z-index: 2000; /* Alto z-index para estar sobre todo */
+    overflow-y: auto; /* Permite scroll si el contenido es largo */
+}
+
+/* =========================================================
+2. CONTENIDO DEL MODAL (Caja Principal)
+   ========================================================= */
+.modal-detalle-content {
+    /* Fondo que sigue el estándar oscuro/degradado */
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    max-width: 700px; /* Un poco más ancho para la tabla */
+    width: 90%;
+    margin: 5% auto; /* Centrado y separado de la parte superior */
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Título principal del Modal */
+#tituloModal {
+    
+    font-family: 'Container-Title', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    color: #00BFFF;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    text-align: center;
+    text-transform: uppercase;
+    animation: glow 2s ease-in-out infinite;
+}
+/*Animacion de brillo al  titulo  que se apaga y prende*/
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px #21ecff ;
+    }
+    50% {
+        text-shadow: 0 0 20px  #21ecff;
+    }
+    100% {
+        text-shadow: 0 0 10px  #21ecff;
+    }
+}
+
+/* Botón de Cerrar (X) */
+#closeDetalleClase {
+    color: #f0f0f0;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#closeDetalleClase:hover,
+#closeDetalleClase:focus {
+    color: #FF6347; /* Color de aviso/cierre al hacer hover */
+    text-decoration: none;
+}
+/* =========================================================
+3. CONTENEDOR DE LA TABLA Y PÁRRAFO
+   ========================================================= */
+#contenidoPlan p {
+    color: #ccc;
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 1rem;
+}
+
+/* =========================================================
+4. ESTILOS DE LA TABLA DE CLASES (modal-detalle-table)
+   ========================================================= */
+.modal-detalle-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    table-layout: fixed; /* Ayuda a que las columnas no se desborden */
+}
+
+/* Encabezados */
+.modal-detalle-table th {
+    background-color: #334454; /* Fondo azul oscuro/gris para encabezados */
+    color: #f0f0f0;
+    padding: 12px 8px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Celdas de datos */
+.modal-detalle-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #334454;
+    vertical-align: middle;
+    font-size: 0.9rem;
+    word-wrap: break-word; /* Previene el desbordamiento de texto largo */
+}
+
+/* Estilo para filas pares (Zebra-striping) */
+.modal-detalle-table tbody tr:nth-child(even) {
+    background-color: #17202a;
+}
+
+/* Efecto HOVER en filas (Profesional y sutil) */
+.modal-detalle-table tbody tr:hover {
+    background-color: #2c3a4e; /* Cambio de color notable al pasar el ratón */
+    cursor: default;
+    transition: background-color 0.2s;
+}
+
+/* Estilo para el nombre del entrenador (para resaltarlo) */
+.modal-detalle-table .trainer-name {
+    font-weight: bold;
+    color: #8be9fd; /* Un azul claro/ciano que resalta sobre el fondo oscuro */
+}
+
+/* =========================================================
+   5. RESPONSIVE (Manejo de la tabla en Móviles)
+   ========================================================= */
+@media (max-width: 768px) {
+    .modal-detalle-content {
+        margin: 10% auto;
+        padding: 20px;
+        width: 95%;
+    }
+    
+    /* En pantallas pequeñas, la tabla puede ser difícil de leer.
+       Una solución común es forzar la tabla a comportarse como bloques apilados,
+       pero para 4 columnas, intentaremos que los encabezados y el texto sean más pequeños. */
+
+    .modal-detalle-table th,
+    .modal-detalle-table td {
+        font-size: 0.8rem;
+        padding: 8px 4px;
+    }
+    
+    /* Si la tabla no cabe, puedes forzar un scroll horizontal SÓLO dentro del modal */
+    .modal-detalle-content {
+        overflow-x: auto;
+    }
+    
+    .modal-detalle-table {
+        min-width: 500px; /* Asegura un ancho mínimo para evitar compresión excesiva */
+    }
+}

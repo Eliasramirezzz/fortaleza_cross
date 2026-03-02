@@ -1,0 +1,440 @@
+/* ==================================== */
+/* SECCIÓN DE MEMBRESÍAS */
+/* ==================================== */
+.seccion-membresias {
+    margin-top: 60px;
+    background: linear-gradient(120deg, #494848da, #ebe8e8, #a8a6a6da, #ebe8e8, #c5c2c2, #494848da, #c5c2c2);
+    padding: 5rem 2rem;
+    text-align: center;
+    overflow: hidden;
+    /* Importante para el título que "se dispara" */
+}
+
+/* Contenedor del título para flexbox y centrado */
+.titulo-seccion-membresias {
+    font-size: 3.2em;
+    color: #a8dadc;
+    /* Un azul cian claro, muy profesional y moderno */
+    margin-bottom: 4.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(168, 218, 220, 0.5), 0 4px 8px rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+    /* Evita que el título se rompa en varias líneas */
+    display: flex;
+    /* Usar flexbox para alinear las letras */
+    justify-content: center;
+    /* Centrar las letras horizontalmente */
+    opacity: 0;
+    /* Por defecto invisible, JavaScript controlará la visibilidad */
+}
+
+/* Estilos iniciales para cada letra */
+.titulo-seccion-membresias .letra {
+    display: inline-block;
+    /* Para que cada span sea un bloque independiente para animación */
+    opacity: 0;
+    /* Inicialmente ocultas */
+    transform: translateY(100%);
+    /* Las letras empiezan fuera de la vista inferior */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    /* Transición suave */
+    /* Eliminar la animación directa aquí, JavaScript la aplicará */
+}
+
+/* Animación de entrada de letras (CSS) */
+@keyframes letraEntra {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación de salida de letras (CSS) */
+@keyframes letraSale {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-200%);
+        /* Disparo hacia arriba */
+    }
+}
+
+/* Animación de la sombra que recorre el borde (SIEMPRE ACTIVA) */
+@keyframes borderGlowPulse {
+    0% {
+        box-shadow: 0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 5px rgba(33, 212, 253, 0.7);
+        /* Base glow */
+    }
+
+    25% {
+        box-shadow: 0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 0px transparent,
+            10px 0 20px rgba(33, 212, 253, 0.7),
+            /* Right side */
+            0 0 5px rgba(33, 212, 253, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 0px transparent,
+            0 0 0px transparent,
+            0 10px 20px rgba(33, 212, 253, 0.7),
+            /* Bottom side */
+            0 0 0px transparent,
+            0 0 5px rgba(33, 212, 253, 0.7);
+    }
+
+    75% {
+        box-shadow: 0 0 0px transparent,
+            -10px 0 20px rgba(33, 212, 253, 0.7),
+            /* Left side */
+            0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 5px rgba(33, 212, 253, 0.7);
+    }
+
+    100% {
+        box-shadow: 0 -10px 20px rgba(33, 212, 253, 0.7),
+            /* Top side */
+            0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 0px transparent,
+            0 0 5px rgba(33, 212, 253, 0.7);
+    }
+}
+
+/* Contenedor de todas las tarjetas */
+.contenedor-tarjetas-membresia {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* Estilo de las tarjetas individuales */
+.tarjeta-membresia {
+    background: linear-gradient(145deg, #1f2a38, #18222b);
+    color: #ffffff;
+    width: 300px;
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    /* Esencial para posicionar el badge interno */
+    overflow: hidden;
+    /* Asegura que el badge no se salga */
+    border: 2px solid transparent;
+    /* Borde transparente por defecto */
+    /* Aplicar la animación de borde a todas las tarjetas de forma continua */
+    animation: borderGlowPulse 4s infinite ease-in-out;
+    /* Más lento, siempre activo */
+}
+
+/* Efecto hover más notable */
+.tarjeta-membresia:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+    border-color: #21d4fd;
+    /* Borde de color al hacer hover */
+}
+
+/* Título de cada plan */
+.titulo-plan {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    color: #21d4fd;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Precio del plan */
+.precio-plan {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin: 0.8rem 0 1.5rem 0;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Descripción breve */
+.descripcion-plan {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    color: #b0c4de;
+    line-height: 1.5;
+}
+
+/* Lista de características */
+.caracteristicas-plan {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.caracteristicas-plan li {
+    margin: 0.6rem 0;
+    font-size: 0.9rem;
+    text-align: left;
+    position: relative;
+    padding-left: 2rem;
+    color: #e0e0e0;
+}
+
+.caracteristicas-plan li::before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4CAF50;
+    font-size: 1rem;
+}
+
+/* Botón "Quiero!" */
+.boton-plan {
+    display: inline-block;
+    background-color: #21d4fd;
+    color: #0f1c24;
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.boton-plan:hover {
+    background-color: #00c6fb;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================================== */
+/* ESTILO ESPECIAL PARA PLAN DESTACADO (Plan Completo) */
+/* ==================================== */
+.tarjeta-recomendada {
+    background: linear-gradient(145deg, #007BFF, #0056b3);
+    border: 3px solid #21d4fd;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 0 0 30px rgba(33, 212, 253, 0.5);
+    transform: scale(1.05);
+    /* Ligeramente más grande por defecto */
+    position: relative;
+    overflow: hidden;
+    /* Asegurar que el badge no se desborde al ser interno */
+    /* El plan completo también tiene la animación de borde */
+    animation: borderGlowPulse 4s infinite ease-in-out;
+}
+
+.tarjeta-recomendada .titulo-plan,
+.tarjeta-recomendada .precio-plan {
+    color: #ffffff;
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.4);
+}
+
+.tarjeta-recomendada .boton-plan {
+    background-color: #21d4fd;
+    color: #0f1c24;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 0 15px rgba(33, 212, 253, 0.7);
+}
+
+.tarjeta-recomendada.boton-plan:hover {
+    background-color: #00c6fb;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(33, 212, 253, 0.9);
+    /* Mantener la animación de borde en el hover */
+    animation: borderGlowPulse 1.5s infinite ease-in-out;
+    /* Más rápido al hacer hover */
+}
+
+/* Etiqueta "Recomendado" ahora interna y con rotación */
+/* Estilo para el badge dentro de CUALQUIER tarjeta recomendada */
+.tarjeta-membresia.tarjeta-recomendada .badge-recomendado {
+    position: absolute;
+    top: 20px;
+    /* Ajusta la posición superior */
+    right: -25px;
+    /* Ajusta para que una parte esté fuera del borde derecho visualmente */
+    background-color: #ffc107;
+    color: #212529;
+    padding: 5px 20px;
+    /* Ajustado para el tamaño y la rotación */
+    font-size: 0.75em;
+    /* Tamaño de letra ligeramente mayor */
+    font-weight: 700;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    /* ¡Rotación de vuelta! */
+    transform-origin: 50% 50%;
+    /* Punto de rotación en el centro */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+    white-space: nowrap;
+    /* Evita que el texto se rompa en varias líneas */
+}
+
+/*Tarjeta de nota-informacion*/
+.tarjeta-nota-accion {
+    /* Fondo con un color que simule una nota o alerta suave */
+    /*  background-color: #fff3cd; Amarillo suave, típico para notas/advertencias */
+    /*  border: 1px solid #ffeeba; */
+    background: linear-gradient(135deg, #272727 0%, rgb(1, 1, 31) 50%, #272727 100%);
+    border-radius: 8px;
+    /* Bordes redondeados */
+    padding: 20px;
+    margin-top: 20px;
+    /* Separación de la tarjeta de plan */
+    margin-bottom: 20px;
+    /* Separación de la nota inferior */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra para darle profundidad */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.mensaje-accion {
+    font-size: 1.1em;
+    color: #bb9114;
+    /* Color de texto que combine con el fondo */
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.botones-accion a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    /* Quitar el subrayado por defecto */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo para el botón de Iniciar Sesión */
+.boton-login {
+    background-color: #007bff;
+    /* Color primario, como azul */
+    color: white;
+    border: 1px solid #007bff;
+}
+
+.boton-login:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para el botón de Registrarse */
+.boton-registro {
+    background-color: #28a745;
+    /* Color secundario o de éxito, como verde */
+    color: white;
+    border: 1px solid #28a745;
+}
+
+.boton-registro:hover {
+    background-color: #1e7e34;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .seccion-membresias {
+        padding: 3rem 1rem;
+    }
+
+    .titulo-seccion-membresias {
+        font-size: 2.2em;
+        margin-bottom: 3rem;
+        letter-spacing: 2px;
+        /* Ajuste para pantallas más pequeñas */
+    }
+
+    .contenedor-tarjetas-membresia {
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .tarjeta-membresia {
+        width: 100%;
+        max-width: 350px;
+        padding: 2rem 1.5rem;
+        /* Remover animación constante en móvil para rendimiento */
+        animation: none !important;
+    }
+
+    #plan-completo {
+        transform: scale(1);
+    }
+
+    #plan-completo .badge-recomendado {
+        font-size: 0.6em;
+        padding: 4px 15px;
+        top: 15px;
+        right: -15px;
+        /* Ajuste para móvil */
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo-seccion-membresias {
+        font-size: 1.8em;
+        letter-spacing: 1.5px;
+    }
+
+    .tarjeta-membresia {
+        padding: 1.5rem 1rem;
+    }
+
+    .titulo-plan {
+        font-size: 1.5rem;
+    }
+
+    .precio-plan {
+        font-size: 2.8rem;
+    }
+
+    .descripcion-plan {
+        font-size: 0.9rem;
+    }
+
+    .caracteristicas-plan li {
+        font-size: 0.85rem;
+    }
+
+    .boton-plan {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}

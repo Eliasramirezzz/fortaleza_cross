@@ -1,0 +1,124 @@
+/* ==================================== */
+/* CARRUSEL DE GIFS - ESTILOS FINALES DEL TEXTO (REFINADO) */
+/* ==================================== */
+/* Tus estilos ORIGINALES para el contenedor del carrusel */
+.carousel-container-gifs {
+    width: 100vw;
+    /* Cambiamos a 100vw para asegurar cobertura total y evitar posibles desfases */
+    overflow: hidden;
+    margin: 0;
+    margin-top: 60px;
+    position: relative;
+    height: 100vh;
+    /* Fija la altura del contenedor para que el centrado vertical sea predecible */
+}
+
+/* Tus estilos ORIGINALES para el carrusel (la fila de imágenes) */
+.carousel-gifs {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+    /* Asegura que ocupe toda la altura del contenedor */
+}
+
+/* Tus estilos ORIGINALES para las imágenes dentro del carrusel */
+.carousel-gifs img {
+    width: 100%;
+    height: 100%;
+    /* Las imágenes se ajustan a la altura del carrusel */
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Indicadores opcionales (puntos de navegación) */
+.indicators-gifs {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 15;
+}
+
+.indicator-gifs {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.indicator-gifs.active {
+    background-color: #a8dadc;
+    transform: scale(1.2);
+    border-color: #0f1c24;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .texto-bienvenida-carrusel h1 {
+        font-size: 3rem;
+        letter-spacing: 1.5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .texto-bienvenida-carrusel {
+        padding: 15px;
+        width: 95%;
+        /* Asegura que el texto sea visible y estático en móviles */
+        transform: translate(-50%, -50%) scale(1) !important;
+        /* Mantiene centrado y tamaño normal */
+        opacity: 1 !important;
+        /* Siempre visible */
+    }
+
+    .texto-bienvenida-carrusel h1 {
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+        /* Desactiva animaciones complejas en móviles para rendimiento */
+        animation: none !important;
+        /* Para móviles, forzamos un color fijo y una sombra simple */
+        color: #000000 !important;
+        /* Por defecto negro en móviles */
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.7) !important;
+        background: none !important;
+        /* Elimina el gradiente */
+        -webkit-text-fill-color: initial !important;
+        /* Restaura el color normal del texto */
+    }
+
+    .indicators-gifs {
+        bottom: 10px;
+        gap: 5px;
+    }
+
+    .indicator-gifs {
+        width: 10px;
+        height: 10px;
+    }
+
+    .carousel-container-gifs {
+        /*
+         * Ajustar la altura a un valor que no sea 100vh.
+         * Por ejemplo, 60vh hará que ocupe el 60% de la altura de la pantalla.
+         */
+        height: 60vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .texto-bienvenida-carrusel h1 {
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* 🎯 AJUSTE ADICIONAL: Altura para pantallas muy pequeñas */
+    .carousel-container-gifs {
+        height: 50vh;
+    }
+}

@@ -1,0 +1,993 @@
+/*Esto es un reset*/
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+li,
+pre,
+code,
+address,
+variable,
+form,
+fieldset,
+blockquote {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td,
+th,
+caption {
+    font-weight: normal;
+    text-align: left;
+}
+
+img,
+fieldset {
+    border: 0;
+}
+
+ol {
+    padding-left: 1.4em;
+    list-style: decimal;
+}
+
+ul {
+    padding-left: 1.4em;
+    list-style: square;
+}
+
+q::before,
+q::after {
+    content: '';
+}
+
+/*=========================CUERPO=========================*/
+body {
+    /*color de fondo estilo degradado en circulo degradado*/
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.61), rgb(221, 221, 247), rgba(255, 255, 255, 0.61), rgb(221, 221, 247), rgba(255, 255, 255, 0.61), rgb(221, 221, 247), rgba(255, 255, 255, 0.61));
+    display: flex;
+    flex-direction: column;
+
+
+    overflow-x: hidden;
+    /* Evita el scroll horizontal forzado */
+    width: 100%;
+    /* Asegura que el body no es más ancho que la pantalla */
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Oculta cualquier scroll horizontal */
+}
+
+/* Para que el contenido del <main> no quede tapado por el header */
+@font-face {
+    /*Letras para los nav*/
+    font-family: 'Nav';
+    src: url('../data/tahomabd.ttf') format('truetype');
+}
+
+@font-face {
+    /*Letras para los separadores*/
+    font-family: 'separador';
+    src: url('../data/impact.ttf') format('truetype');
+}
+
+/*Para el titulo de los contenedores*/
+@font-face {
+    font-family: 'Container-Title';
+    src: url('../data/tahomabd.ttf') format('truetype');
+}
+
+/*=========================HEADER=========================*/
+.header {
+    display: flex;
+    /* Permite que los elementos internos se coloquen en una fila */
+    justify-content: space-between;
+    /* Distribuye el espacio entre los contenedores */
+    align-items: center;
+    /* Centra verticalmente los elementos */
+    background-color: #0a0a23;
+    /* Fondo negro o azul muy oscuro */
+    color: white;
+    /* Color de texto predeterminado para el header */
+    height: 70px;
+    /* Altura del header */
+    width: 100%;
+    /* Ocupa todo el ancho */
+    position: fixed;
+    /* Mantiene el header fijo en la parte superior */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    /* Asegura que el header esté por encima de otros elementos */
+    padding: 0 20px;
+    /* Pequeño padding horizontal para los bordes */
+    box-sizing: border-box;
+    /* Incluye el padding en el ancho y alto total */
+    box-shadow: 0 2px 10px #171750;
+    /* Sombra que ya tenías */
+    font-family: 'Nav';
+}
+
+/* --- Logo --- */
+.logo-container {
+    display: flex;
+    /* Para centrar la imagen si es necesario */
+    align-items: center;
+}
+
+.logo {
+    height: 55px;
+    /* Tamaño del logo un poco más grande */
+    width: auto;
+    /* Mantiene la proporción */
+    transition: transform 0.3s ease;
+    /* Transición suave para el hover*/
+    cursor: pointer;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    /* Efecto al pasar el mouse (se agranda ligeramente) */
+}
+
+/* --- Navegación (Enlaces) --- */
+.nav {
+    margin-left: 20px;
+    /* Reduce este valor para acercar más al logo */
+    margin-right: auto;
+    /* Empuja los iconos a la derecha lo más posible */
+    flex-grow: 1;
+    /* Permite que la navegación crezca y ocupe espacio, empujando los iconos */
+}
+
+.nav-list {
+    list-style: none;
+    /* Quita los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* Pone los elementos de la lista en fila */
+}
+
+.nav-list li {
+    margin: 0 10px;
+    /* Espacio entre los enlaces, ajusta si quieres más o menos */
+    position: relative;
+    /* FUNDAMENTAL para posicionar el submenú */
+}
+
+.nav-list a {
+    /* font-family: 'Nav'; */
+    /* Si 'Nav' es una fuente personalizada, asegúrate de importarla */
+    text-decoration: none;
+    /* Quita el subrayado de los enlaces */
+    color: white;
+    /* Color de letra blanco */
+    font-weight: 700;
+    /* Grosor de la fuente a bold */
+    transition: color 0.2s ease, transform 0.2s ease;
+    /* Transición suave para color y tamaño */
+    display: block;
+    /* Necesario para que el transform funcione */
+    padding: 5px 0;
+    /* Un poco de padding para mejor área de click */
+}
+
+.nav-list a:hover {
+    color: #00BFFF;
+    /* Color azul claro al pasar el mouse (DeepSkyBlue) */
+    transform: scale(1.05);
+    /* Se agranda un poquito */
+}
+
+/* Estilos para el elemento activo (puedes añadir una clase 'active' con JS) */
+.nav-list a.active,
+.dropdown-plan-clientes a.active {
+    color: #00BFFF;
+    /* Mismo azul claro para el enlace activo */
+    border-bottom: 2px solid #00BFFF;
+    /* Subrayado para indicar activo */
+    padding-bottom: 3px;
+    /* Ajuste para que el subrayado no corte el texto */
+}
+
+.dropdown-plan-clientes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #0a0a23;
+    /* Mismo color de fondo que el header */
+    position: absolute;
+    /* Posiciona el submenú en relación con su padre li */
+    top: 100%;
+    /* Coloca el submenú justo debajo del enlace padre */
+    left: 0;
+    min-width: 150px;
+    /* Ancho mínimo para los elementos del submenú */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    /* Sombra para profundidad */
+    z-index: 1001;
+    /* Asegura que el submenú esté por encima del header */
+    opacity: 0;
+    /* Oculto por defecto */
+    visibility: hidden;
+    /* Oculto para accesibilidad y no interaccionar */
+    transform: translateY(10px);
+    /* Pequeño desplazamiento para la animación de aparición */
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    /* Transición suave */
+    border-top: 2px solid #00BFFF;
+    /* Borde superior para separar visualmente */
+    border-radius: 0 0 5px 5px;
+    /* Bordes redondeados en la parte inferior */
+}
+
+.submenu-tipo-plan-cliente:hover>.dropdown-plan-clientes {
+    opacity: 1;
+    /* Muestra el submenú al hacer hover en el padre */
+    visibility: visible;
+    transform: translateY(0);
+    /* Vuelve a su posición original al aparecer */
+}
+
+.dropdown-plan-clientes li {
+    margin: 0;
+    /* Elimina el margen entre los elementos del submenú */
+}
+
+.dropdown-plan-clientes a {
+    padding: 10px 20px;
+    /* Más padding para los elementos del submenú */
+    color: white;
+    /* Color de texto blanco */
+    font-weight: 400;
+    /* Menos negrita que el enlace principal, opcional */
+    white-space: nowrap;
+    /* Evita que el texto se rompa en varias líneas */
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    /* Transiciones para hover */
+}
+
+.dropdown-plan-clientes a:hover {
+    background-color: #1a1a3b;
+    /* Un tono un poco más claro que el fondo del header */
+    color: #00BFFF;
+    /* Azul claro para el texto al hacer hover */
+    transform: scale(1.02);
+    /* Ligeramente más pequeño el agrandamiento para submenús */
+}
+
+/* =========================================================
+    ESTILOS PARA LA SECCIÓN DE USUARIO
+========================================================= */
+.header-icons {
+    position: relative;
+    /* Contenedor para alinear el menú desplegable */
+}
+
+/* El menú se muestra mientras el mouse esté en header-icons o en el dropdown */
+.header-icons:hover .dropdown-user {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.login-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #E0E0E0;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    background: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.login-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Estilos para el icono */
+.login-icon {
+    font-size: 1.5rem;
+    color: #00BFFF;
+    /* Color azul para el icono */
+}
+
+.login-text {
+    font-weight: 600;
+}
+
+.profile-pic {
+    width: 28px;
+    /* Ajusta el tamaño según tu diseño */
+    height: 28px;
+    border-radius: 50%;
+    /* Hacerla circular */
+    object-fit: cover;
+    /* Evita que la imagen se deforme */
+    vertical-align: middle;
+    /* Espacio entre la imagen y el nombre */
+    border: 1px solid #4dc3ff;
+    /* Opcional: borde azul */
+}
+
+/* Opcional: Contenedor si usaste Opción B HTML */
+.user-icon-container {
+    display: inline-block;
+    /* Para alinear correctamente */
+    vertical-align: middle;
+}
+
+/* Submenú o Dropdown del usuario */
+.dropdown-user {
+    display: none;
+    /* Oculto por defecto */
+    position: absolute;
+    top: calc(100% + 0);
+    /* Se posiciona 10px debajo del enlace */
+    right: 0;
+    background-color: #1a1a3b;
+    /* Color de fondo oscuro */
+    border-radius: 8px;
+    min-width: 200px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* El menú se muestra mientras el mouse esté sobre todo el header-icons */
+.header-icons:hover .dropdown-user {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-user li a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #B0C4DE;
+    /* Color azul claro para los enlaces */
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-user li a:hover {
+    background-color: rgba(0, 191, 255, 0.1);
+    /* Fondo azul claro semitransparente al pasar el mouse */
+    color: #00BFFF;
+}
+
+/* =========================================================
+    RESPONSIVE
+========================================================= */
+@media (max-width: 480px) {
+
+    /* Ajustes generales para el header en pantallas más pequeñas */
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 15px;
+    }
+
+    .logo-container {
+        flex-basis: 30%;
+    }
+
+    .login-text {
+        display: none;
+    }
+
+    /* Centrar el ícono en móviles si el texto está oculto */
+    .login-icon {
+        font-size: 1.8rem;
+    }
+
+    .login-link {
+        padding: 8px;
+    }
+
+    /* El dropdown puede ser más ancho para mejorar la usabilidad */
+    .dropdown-user {
+        min-width: 180px;
+        /* Asegura que el submenú se ancle y no se desborde */
+        left: auto;
+        right: 0;
+        /* Asegura que el menú esté alineado a la derecha */
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Ajustes generales para el header en pantallas más pequeñas */
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 15px;
+    }
+
+    .logo-container {
+        flex-basis: 30%;
+    }
+
+    /* Ocultar el texto del usuario en móviles para ahorrar espacio */
+    .login-text {
+        display: none;
+    }
+
+    /* Centrar el ícono en móviles si el texto está oculto */
+    .login-icon {
+        font-size: 1.8rem;
+    }
+
+    .login-link {
+        padding: 8px;
+    }
+
+    /* El dropdown puede ser más ancho para mejorar la usabilidad */
+    .dropdown-user {
+        min-width: 180px;
+        /* Asegura que el submenú se ancle y no se desborde */
+        left: auto;
+        right: 0;
+        /* Asegura que el menú esté alineado a la derecha */
+    }
+}
+
+/*Nuervo para el resposnive*/
+/* Botón hamburguesa (oculto en desktop) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+        /* Ocultamos el menú por defecto */
+        position: absolute;
+        top: 70px;
+        /* Debajo del header */
+        left: 0;
+        width: 100%;
+        background-color: #0a0a23;
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    .nav.active {
+        display: flex;
+        /* Se muestra cuando se activa con JS */
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+    }
+
+    /* Botón hamburguesa visible en móvil */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Submenús en móvil: se despliegan al hacer click */
+    .dropdown-plan-clientes {
+        position: static;
+        opacity: 1;
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .submenu-tipo-plan-cliente.open .dropdown-plan-clientes {
+        visibility: visible;
+        max-height: 300px;
+        /* Suficiente para mostrar los items */
+    }
+}
+
+/* ======================================= Diseño del Main =======================================*/
+main {
+    margin-top: 80px;
+}
+
+/*======================== Contenedor del Botón Flotante =============================*/
+.whatsapp-float-btn {
+    /* Claves para la posición flotante en la esquina inferior derecha */
+    position: fixed;
+    bottom: 25px;
+    /* Separación del borde inferior */
+    right: 25px;
+    /* Separación del borde derecho */
+
+    z-index: 1000;
+    cursor: pointer;
+    text-decoration: none;
+    /* Elimina cualquier subrayado del enlace */
+    /* Mantenemos la sombra y los bordes para el estilo */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    /* Hacemos el contenedor circular para mejor diseño */
+    transition: transform 0.3s ease-in-out;
+}
+
+.whatsapp-float-btn:hover {
+    transform: scale(1.05);
+    /* Ligerísimo zoom al pasar el mouse */
+}
+
+/* Estilos de la imagen del icono */
+.ico_what {
+    width: 55px;
+    /* Tamaño base del icono */
+    height: 55px;
+    border-radius: 50%;
+    /* Mantenemos el borde y el fondo oscuro si lo deseas */
+    background: #17202a;
+    border: 3px solid rgb(147, 255, 183);
+    box-shadow: 0 0 0 0 rgba(147, 255, 183, 0.7);
+    /* Sombra para el efecto de pulso */
+    animation: pulseGlow 2s infinite, heartbeat 1.5s infinite;
+    /* Combina ambas animaciones */
+}
+
+
+/* === Animación de Pulso (Sutil) === */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(147, 255, 183, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(147, 255, 183, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(147, 255, 183, 0);
+    }
+}
+
+/* === Animación Heartbeat (Movimiento sutil) === */
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+        /* Movimiento sutil para no desplazar */
+    }
+}
+
+/* =========================================================
+    RESPONSIVE: Ajustes para Móviles
+========================================================= */
+
+@media (max-width: 600px) {
+    .whatsapp-float-btn {
+        bottom: 15px;
+        /* Más cerca del borde en móviles */
+        right: 15px;
+
+
+        bottom: 15px !important;
+        /* Prioridad alta */
+        right: 15px !important;
+        /* Prioridad alta */
+    }
+
+    .ico_what {
+        width: 50px;
+        /* Un poco más pequeño en móviles */
+        height: 50px;
+    }
+}
+
+
+/* =========================================================
+ESTILOS PARA EL MENSAJE DE BIENVENIDA
+========================================================= */
+
+.container-mensaje-bienvenida {
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    /* Fondo oscuro */
+    color: #E0E0E0;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin: 10px auto;
+    max-width: 1200px;
+    text-align: center;
+    /* Centra el contenido */
+}
+
+/* Definición de la animación de cambio de color */
+@keyframes colorChange {
+    0% {
+        color: #E0E0E0;
+    }
+
+    /* Blanco casi puro */
+    50% {
+        color: #00BFFF;
+    }
+
+    /* Azul claro */
+    100% {
+        color: #E0E0E0;
+    }
+
+    /* Vuelve a blanco */
+}
+
+/* Estilo para el título con la animación */
+.container-mensaje-bienvenida .titulo-bienvenida {
+    font-size: 1.8rem;
+    font-family: "Container-Title";
+    color: #E0E0E0;
+    /* Color inicial del título */
+    animation: colorChange 4s infinite;
+    /* Aplica la animación */
+    text-shadow: 0 0 5px rgba(0, 191, 255, 0.4);
+    /* Sombra para un efecto brillante */
+}
+
+/* Definición de la animación de entrada */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+        /* Empieza un poco abajo */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo para el texto de bienvenida con la animación */
+.container-mensaje-bienvenida .texto-bienvenida {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #E0E0E0;
+    /* Color blanco */
+    font-weight: bold;
+    animation: fadeIn 1s ease-out;
+    /* Aplica la animación de entrada */
+}
+
+/*=========================FOOTER=========================*/
+footer {
+    background-color: #0f1c24;
+    /* Color de fondo oscuro y robusto */
+    color: #ffffff;
+    padding: 50px 20px 20px;
+    /* Padding superior, a los lados y inferior */
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    /* Alineación por defecto, luego ajustada por flexbox */
+}
+
+.footer-contenido {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que las columnas se apilen en móviles */
+    justify-content: space-around;
+    /* Distribuye las columnas */
+    align-items: flex-start;
+    /* Alinea las columnas arriba */
+    max-width: 1200px;
+    /* Ancho máximo del contenido del footer */
+    margin: 0 auto 40px auto;
+    /* Centra el contenido y añade margen inferior antes del copyright */
+    gap: 30px;
+    /* Espacio entre las columnas */
+}
+
+.footer-columna {
+    flex: 1 1 100px;
+    /* Crece y encoge, con un ancho base de 280px */
+    padding: 15px;
+    text-align: left;
+    /* Alineación del texto dentro de cada columna */
+}
+
+.footer-columna h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 25px;
+    color: #a8dadc;
+    /* Color de tus títulos llamativos */
+    position: relative;
+    padding-bottom: 8px;
+    /* Espacio para el subrayado */
+}
+
+/* Subrayado animado para los títulos del footer */
+.footer-columna h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    /* Ancho inicial del subrayado */
+    height: 3px;
+    background-color: #21d4fd;
+    /* Color del subrayado */
+    border-radius: 2px;
+    transition: width 0.3s ease-out;
+}
+
+.footer-columna h3:hover::after {
+    width: 100%;
+    /* El subrayado se expande al pasar el mouse */
+}
+
+/* Estilos para la columna de marca/logo */
+.footer-marca {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo-inferior img {
+    width: 100px;
+    /* Tamaño del logo en el footer */
+    height: 100px;
+    /* Tamaño igual para que sea redondo */
+    border-radius: 50%;
+    /* Hacerlo redondo */
+    object-fit: cover;
+    border: 3px solid #a8dadc;
+    box-shadow: 0 0 15px rgba(168, 218, 220, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.footer-logo-inferior img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(168, 218, 220, 0.7);
+}
+
+.footer-marca p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 25px;
+}
+
+/* Estilos para las redes sociales en el footer */
+.redes-sociales-footer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.redes-sociales-footer a {
+    font-size: 1.6rem;
+    color: #ffffff;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.redes-sociales-footer a:hover {
+    color: #21d4fd;
+    /* Color de hover para los iconos */
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* Estilos para la columna de contacto */
+.footer-contacto p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    /* Alinea texto e icono si el texto es largo */
+    gap: 10px;
+}
+
+.footer-contacto p i {
+    color: #21d4fd;
+    /* Color de los iconos de contacto */
+    font-size: 1.1em;
+    min-width: 20px;
+    /* Para alinear si el icono es más pequeño */
+    text-align: center;
+    padding-top: 2px;
+    /* Alineación vertical fina con el texto */
+}
+
+/* Estilos para la columna de enlaces rápidos */
+.footer-enlaces-rapidos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-enlaces-rapidos ul li {
+    margin-bottom: 10px;
+}
+
+.footer-enlaces-rapidos ul li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.footer-enlaces-rapidos ul li a:hover {
+    color: #a8dadc;
+    /* Color de hover para los enlaces rápidos */
+    transform: translateX(5px);
+}
+
+/* Barra de Copyright */
+.footer-copyright {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* Línea divisoria */
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.desarrollador {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.desarrollador a {
+    text-decoration: none;
+    margin: 10px;
+    color: rgba(255, 255, 255, 0.82);
+    font-weight: bold;
+}
+
+.desarrollador a:hover {
+    color: #a8dadc;
+    font-size: 1.0rem;
+    ;
+}
+
+.desarrollador img:hover {
+    transform: scale(1.08);
+}
+
+/* ==================================== */
+/* MEDIA QUERIES PARA ADAPTACIÓN DEL FOOTER */
+/* ==================================== */
+@media (max-width: 992px) {
+    .footer-contenido {
+        flex-direction: column;
+        /* Apila las columnas */
+        align-items: center;
+        gap: 10px;
+        /* separación mínima entre bloques */
+        margin-bottom: 10px;
+    }
+
+    .footer-columna {
+        width: 95%;
+        max-width: 350px;
+        text-align: center;
+        margin: 0;
+        /* quita márgenes extra */
+        padding: 5px 0;
+        /* reduce relleno vertical */
+    }
+
+    .footer-columna h3 {
+        margin-bottom: 5px;
+        /* menos espacio debajo del título */
+        text-align: center;
+    }
+
+    .footer-columna h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-contacto p {
+        justify-content: center;
+        margin: 2px 0;
+        /* compacta cada línea de contacto */
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 25px 10px 10px;
+        /* menos relleno total */
+    }
+
+    .footer-columna h3 {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+    }
+
+    .footer-logo-inferior img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .footer-marca p,
+    .footer-contacto p,
+    .footer-enlaces-rapidos ul li a {
+        font-size: 0.8rem;
+    }
+
+    .redes-sociales-footer a {
+        font-size: 1.2rem;
+    }
+
+    .footer-copyright {
+        font-size: 0.7rem;
+        margin-top: 5px;
+        padding-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 20px 5px 5px;
+    }
+
+    .footer-columna {
+        padding: 5px 0;
+    }
+
+    .footer-columna h3 {
+        font-size: 1.1rem;
+    }
+}

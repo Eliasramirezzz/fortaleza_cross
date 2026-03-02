@@ -1,0 +1,129 @@
+/* ========================================================= */
+/* ESTILOS BASE Y OCULTAMIENTO (Reutiliza tus clases .modal-overlay si ya las tienes) */
+/* ========================================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay--oculto {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* ========================================================= */
+/* ESTILOS ESPECÍFICOS DEL MODAL DE PAGO */
+/* ========================================================= */
+.modal-pago--content {
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+/* Animación de entrada */
+.modal-overlay:not(.modal-overlay--oculto) .modal-pago--content {
+    transform: scale(1);
+}
+
+.modal-pago__title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.02rem; font-weight: 600;
+    color: #4dc3ff; /* Azul claro */
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.modal-pago__info {
+    background-color: #2a2a4a;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.modal-pago__info strong {
+    font-family: 'Poppins', sans-serif;
+    color:  #6397ff; /* Color de énfasis */
+}
+
+.modal-pago__monto {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #4caf50; /* Color verde para el monto */
+    font-size: 1.3rem;
+}
+
+.modal-pago__field {
+    margin-bottom: 15px;
+}
+
+.modal-pago__label {
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.modal-pago__select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #5a5a7a;
+    background-color: #3a3a5a;
+    color: #ffffff;
+    font-size: 1rem;
+    -webkit-appearance: none; /* Ocultar flecha por defecto en Webkit */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Contenedor de botones */
+.modal-pago__actions {
+    display: flex;
+    justify-content: flex-end; /* Alinear a la derecha */
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.modal-pago__btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.modal-pago__btn--cancelar {
+    background-color: #757575;
+    color: white;
+}
+
+.modal-pago__btn--cancelar:hover {
+    background-color: #5a5a5a;
+}
+
+.modal-pago__btn--confirmar {
+    background-color: #4caf50; /* Verde para confirmar */
+    color: white;
+}
+
+.modal-pago__btn--confirmar:hover {
+    background-color: #388e3c;
+}

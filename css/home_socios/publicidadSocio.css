@@ -1,0 +1,249 @@
+/* =========================================================
+ESTILOS PARA PUBLICIDAD, EVENTOS Y NOTICIAS
+========================================================= */
+
+/* Estilos de fuentes para los títulos */
+@font-face {
+    font-family: 'Container-Title';
+    src: url('../../data/tahomabd.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'title-Nows';
+    src: url('../../data/GARA.TTF') format('truetype');
+}
+
+/* Contenedor principal de la sección */
+.container-publicidad {
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    color: #E0E0E0;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.container-publicidad .titulo-publicidad {
+    font-family: 'Container-Title', sans-serif;
+    color: #00BFFF;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.contenido-publicidad {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Estilos para el contenedor de imagen fija (Publicidad) */
+.publicidad-imagen {
+    flex-shrink: 0;
+    width: 300px;
+    height: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.publicidad-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Contenedor del carrusel y botones de scroll */
+.scroll-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.tarjetas-scroll {
+    display: flex;
+    overflow-x: scroll;
+    gap: 20px;
+    padding: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.tarjetas-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* Animación de brillo para el borde */
+@keyframes bordeBrillo {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Estilos de las tarjetas individuales */
+.tarjeta {
+    flex-shrink: 0;
+    width: 280px;
+    background-color: #0b1120;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.tarjeta::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    background-size: 200% 200%;
+    animation: bordeBrillo 2s linear infinite;
+    z-index: -1;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.tarjeta:hover::before {
+    opacity: 1;
+}
+
+/* Estilos para el contenido de la tarjeta */
+.tarjeta h3 {
+    font-family: 'title-Nows', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: #00BFFF;
+    margin-top: 0;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.tarjeta p {
+    color: #B0C4DE;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.tarjeta p:hover {
+    color: white;
+}
+
+.tarjeta img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.tarjeta img:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.tarjeta a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #00BFFF;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.tarjeta a:hover {
+    color: #66bb6a;
+    transform: translateX(5px);
+}
+
+/* Estilos para los botones de scroll */
+.btn-scroll {
+    background-color: #2c3e50;
+    color: #E0E0E0;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+.btn-scroll:hover {
+    background-color: #4a6584;
+    transform: scale(1.1);
+}
+
+/* =========================================================
+RESPONSIVE - PUBLICIDAD Y NOTICIAS
+========================================================= */
+
+@media (max-width: 900px) {
+    /* Oculta la imagen fija */
+    .publicidad-imagen {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .contenido-publicidad {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .scroll-wrapper {
+        width: 100%;
+        /* Asegura que el contenedor de las tarjetas no tenga un ancho fijo */
+        overflow-x: hidden; /* Oculta el scroll horizontal del contenedor principal */
+        position: relative;
+    }
+
+    /* Ocultamos los botones de scroll en móviles, como lo habías definido */
+    /* .btn-scroll {
+        display: none;
+    } */
+
+    /* Mostramos los botones de scroll y los posicionamos para móviles */
+    .btn-scroll {
+        display: block; /* Vuelve a mostrar los botones */
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 5px 8px;
+        font-size: 1rem;
+    }
+
+    .btn-scroll.left {
+        left: 5px;
+    }
+
+    .btn-scroll.right {
+        right: 5px;
+    }
+
+    .tarjetas-scroll {
+        width: 100%;
+        padding: 10px;
+        gap: 15px;
+        overflow-x: scroll; /* Vuelve a habilitar el scroll para el carrusel */
+        scroll-snap-type: x mandatory; /* Para que se detenga en cada tarjeta */
+    }
+
+    .tarjeta {
+        min-width: 80%; /* Asegura que la tarjeta ocupe la mayor parte de la pantalla */
+        scroll-snap-align: start; /* Ayuda a que la tarjeta se alinee al inicio al hacer scroll */
+    }
+}

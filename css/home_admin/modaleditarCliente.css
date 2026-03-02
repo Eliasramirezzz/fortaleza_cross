@@ -1,0 +1,101 @@
+/* Fondo oscuro */
+.modal-overlay {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Caja del modal */
+.modal-content {
+  background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+  padding: 50px;
+  margin: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.02rem; font-weight: 600;
+    color: #4dc3ff; /* Azul claro */
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    color: #4dc3ff; /* Azul claro */
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #dad9d9;
+}
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4dc3ff; /* Azul claro */
+    box-shadow: 0 0 0 2px rgba(77, 195, 255, 0.3);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.modal-actions button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#btnCancelarEdicion {
+    background: transparent;
+    color: red; /* Azul claro */
+    border: 2px solid red; /* Borde con el mismo azul que el título */
+}
+#btnCancelarEdicion:hover {
+    background: red;
+    color: white ; /* Azul claro */
+    border: 2px solid red; /* Borde con el mismo azul que el título */
+}
+
+#btnConfirmarEdicion {
+    background: transparent;
+    border: 2px solid #4dc3ff; /* Borde con el mismo azul que el título */
+    color: #4dc3ff;
+}
+#btnConfirmarEdicion:hover {
+    background: #4dc3ff;
+    border: 2px solid #4dc3ff; /* Borde con el mismo azul que el título */
+    color: #0a0a23 ;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

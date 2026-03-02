@@ -1,0 +1,130 @@
+/*===================SECTION FUNCIONAL STYLES=======================*/
+
+/* Contenedor principal de la sección Funcional */
+.seccion-funcional {
+    padding: 60px 20px; /* Padding superior para separar del header fijo y padding lateral */
+    background: linear-gradient(135deg, #272727 0%, rgb(1, 1, 31) 50%, #272727 100%);
+    color: #e0e0e0; /* Color de texto claro para contraste */
+    font-family: 'Poppins', sans-serif; /* Consistencia con la fuente del header */
+    line-height: 1.6; /* Espaciado entre líneas para mejor legibilidad */
+    text-align: center; /* Centrar el contenido de la sección */
+}
+
+/* Contenedor interno para centrar y limitar el ancho del contenido */
+.contenedor-funcional {
+    max-width: 900px; /* Ancho máximo para que el contenido no se extienda demasiado en pantallas grandes */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 30px; /* Padding interno */
+    background-color: #0a0a23; /* Fondo más oscuro para el contenedor del contenido */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Sombra sutil para darle profundidad */
+}
+
+/* Título principal de la sección */
+.contenedor-funcional h2 {
+    font-size: 2.5rem; /* Tamaño de fuente grande para el título */
+    color: #00BFFF; /* Color azul claro para el título, igual que el hover del header */
+    margin-bottom: 25px; /* Espacio debajo del título */
+    font-weight: 700; /* Negrita */
+    text-shadow: 0 0 5px rgba(0, 191, 255, 0.5); /* Sombra de texto sutil para que resalte */
+}
+
+/* Párrafo de descripción */
+.contenedor-funcional p {
+    font-size: 1.1rem; /* Tamaño de fuente ligeramente más grande para el párrafo */
+    margin-bottom: 30px; /* Espacio debajo del párrafo */
+    color: #cccccc; /* Un gris más claro para el texto de párrafo */
+}
+
+/* Contenedor de beneficios */
+.beneficios-funcional {
+    background-color: #1a1a3b; /* Fondo para el bloque de beneficios */
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: left; /* Alinear texto a la izquierda dentro de este div */
+}
+
+.beneficios-funcional h3 {
+    font-size: 1.8rem; /* Tamaño de fuente para el subtítulo de beneficios */
+    color: #00BFFF; /* Color azul claro para el subtítulo */
+    margin-bottom: 15px;
+    font-weight: 600; /* Un poco menos negrita que el h2 */
+    text-align: center; /* Centrar el título de Beneficios */
+}
+
+.beneficios-funcional ul {
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: grid; /* Usamos grid para organizar los beneficios en columnas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas responsivas */
+    gap: 15px; /* Espacio entre los ítems del grid */
+}
+
+.beneficios-funcional li {
+    background-color: #0a0a23; /* Fondo para cada ítem de la lista */
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el texto dentro del li */
+    text-align: center;
+    transition: transform 0.2s ease, background-color 0.2s ease; /* Transición para hover */
+}
+
+.beneficios-funcional li::before {
+    content: "\2713"; /* Icono de checkmark unicode (✓) */
+    color: #00BFFF; /* Color azul claro para el checkmark */
+    margin-right: 10px; /* Espacio entre el checkmark y el texto */
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.beneficios-funcional li:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+    background-color: #27274f; /* Fondo ligeramente más claro al hover */
+}
+
+/* Contenedor de horarios */
+.horarios-funcional {
+    background-color: #1a1a3b; /* Fondo para el bloque de horarios */
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.horarios-funcional h3 {
+    font-size: 1.8rem;
+    color: #00BFFF;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.horarios-funcional p {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #e0e0e0;
+    text-shadow: 0 0 3px rgba(0, 191, 255, 0.3); /* Sombra sutil para el horario */
+}
+
+/* Contenedor de la imagen */
+.img-funcional {
+    margin-top: 30px;
+}
+
+.img-funcional img {
+    max-width: 100%; /* La imagen no excederá el ancho de su contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada para la imagen */
+    border: 3px solid #00BFFF; /* Borde azul claro alrededor de la imagen */
+    transition: transform 0.3s ease; /* Transición para un efecto sutil al hover */
+}
+
+.img-funcional img:hover {
+    transform: scale(1.01); /* Ligeramente más grande al pasar el mouse */
+}

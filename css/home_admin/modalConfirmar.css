@@ -1,0 +1,95 @@
+/* Archivo: styles.css o admin.css */
+/*Fuenta de letras*/
+/* 1. Definición para el peso NORMAL (Regular) */
+@font-face {
+    font-family: 'LetraConf';
+    /* Asegúrate de que esta ruta apunte a la versión NO-BOLD de la fuente */
+    src: url('../../data/tahomabd.ttf') format('truetype'); 
+    font-weight: 100; /* Le decimos al navegador que este archivo es el peso normal */
+    font-style: normal;
+}
+
+/*
+=====================================================================
+ESTILOS DEL MODAL DE CONFIRMACIÓN (ConfirmacionRegistrarPlan)
+=====================================================================
+*/
+
+/* Ocultar por defecto, el JS lo mostrará quitando 'aria-hidden' */
+#confirmRegisterOverlay {
+    font-family: 'LetraConf';
+    position: fixed;
+    inset: 0;
+    /* Empieza oculto, el JS le pone 'display: flex' */
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    background: rgba(8,10,20,0.6);
+    z-index: 99999;
+}
+/* El JS añade la clase 'cr-visible' para mostrarlo con animación */
+#confirmRegisterOverlay.cr-visible {
+    display: flex;
+    animation: cr-fade .14s ease;
+}
+
+@keyframes cr-fade { from { opacity: 0 } to { opacity: 1 } }
+
+.cr-modal {
+    width: 92%;
+    max-width: 520px;
+    background: linear-gradient(135deg, #0a0a23, rgb(124, 124, 138) 50%, #0a0a23);
+    color: #e6eef8;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 12px 30px rgba(2,6,23,0.6);
+    text-align: left;
+    transform: translateY(6px);
+    opacity: 0; /* Oculto inicialmente para animar */
+}
+/* El JS añade la clase 'cr-visible' al modal para animarlo */
+#confirmRegisterOverlay.cr-visible .cr-modal {
+    transform: translateY(0);
+    opacity: 1;
+    animation: cr-slide .18s ease;
+}
+
+@keyframes cr-slide { from { transform: translateY(12px); opacity:0 } to { transform: translateY(0); opacity:1 } }
+
+.cr-header {
+    font-family: 'LetraConf';
+    display:flex;
+    gap:12px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.cr-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#ffb86b,#ff7a7a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    flex: 0 0 48px;
+}
+.cr-title { font-family: 'LetraConf'; font-size: 2.00rem; margin:0; color:#fff; font-weight:700; }
+.cr-message { font-family: 'LetraConf'; font-size: 1.05rem; margin: 10px 0 18px; color:#d3e0f5; line-height:1.35; }
+
+.cr-actions { display:flex; justify-content:flex-end; gap:10px; }
+.cr-btn {
+    padding: 8px 14px;
+    border-radius:8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    min-width: 84px;
+}
+.cr-no { background: #ac3e35; color:#dbe9ff;  }
+.cr-yes { background: linear-gradient(90deg,#6454c3,#00bfa5); color: #022; }
+.cr-no:hover { filter: brightness(.95) }
+.cr-yes:hover { filter: brightness(.95) }
+
+/* accesibilidad */
+.cr-modal:focus { outline: none; box-shadow: 0 0 0 3px rgba(0,191,255,0.12); }

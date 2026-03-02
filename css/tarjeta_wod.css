@@ -1,0 +1,306 @@
+/* --- Sección General de CrossFit y WOD Semanal --- */
+#seccionCrossFitGeneral {
+    /* Combinación de colores oscuros para un fondo premium */
+    background: linear-gradient(135deg, #272727 0%, rgb(1, 1, 31) 50%, #272727 100%);
+    padding: 6rem 0;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #f5f5f5;
+    overflow: hidden;
+}
+
+/* Título de la Sección con Animación */
+.titulo-seccion {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    
+    /* Animación del degradado */
+    background: linear-gradient(90deg, #007bff, #f5f5f5, #8c8c8c, #333333);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: 
+        sweep-gradient-reverse 8s linear infinite alternate, /* Animación de colores de barrido */
+        fadeInUp 1.2s ease-out forwards, /* Animación de entrada */
+        pulse 2s infinite alternate 1.2s; /* Animación de pulsación (empieza después de la entrada) */
+    opacity: 0; /* Inicialmente oculto para la animación de entrada */
+}
+
+/* Keyframes para la animación del título de la sección */
+@keyframes sweep-gradient-reverse {
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+/* Animación de entrada para el título */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Animación de pulsación sutil para el título */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.005); } /* Muy sutil para no distraer */
+}
+
+
+/* --- Contenedor de las Tarjetas (para el Scroll Horizontal) y Scrollbar --- */
+.contenedor-wod-semanal {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 2.5rem 3rem;
+    gap: 3rem;
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: #007bff #272727;
+}
+
+.contenedor-wod-semanal::-webkit-scrollbar { height: 12px; }
+.contenedor-wod-semanal::-webkit-scrollbar-track { background: #000000; border-radius: 6px; }
+.contenedor-wod-semanal::-webkit-scrollbar-thumb { background-color: #007bff; border-radius: 6px; border: 3px solid #000000; }
+
+
+/* --- Estilos de las Tarjetas Individuales (WOD Card) --- */
+.tarjeta-wod {
+    flex: 0 0 auto;
+    width: 350px;
+    background-color: #1a1a1a;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    padding: 3rem;
+    text-align: left;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    scroll-snap-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Animación de entrada para las tarjetas */
+    opacity: 0; /* Inicialmente oculto */
+    transform: translateY(30px); /* Ligeramente desplazado hacia abajo */
+    animation: cardFadeInUp 0.8s ease-out forwards; /* Animación de aparición */
+    /* El 'animation-delay' se establecerá con JavaScript para un efecto escalonado */
+}
+
+/* Efecto hover existente (mantenemos esto) */
+.tarjeta-wod:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+.dia-tarjeta {
+    font-size: 2.8rem; /* Día más grande */
+    font-weight: 800;
+    color: #007bff; /* Azul fuerte */
+    margin-bottom: 1.5rem;
+    border-bottom: 4px solid #007bff; /* Línea inferior más gruesa */
+    padding-bottom: 1rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra suave para el texto del día */
+}
+/* Keyframes para la animación de entrada de las tarjetas */
+@keyframes cardFadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contenido-tarjeta {
+    color: #e0e0e0; /* Color de texto más claro para el contenido de la tarjeta */
+}
+
+.titulo-wod {
+    font-size: 2.2rem; /* Título del WOD más grande */
+    font-weight: 700;
+    color: #ffffff; /* Blanco puro para el título del WOD */
+    margin-bottom: 1rem;
+    text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.tipo-wod {
+    font-size: 1.2rem;
+    color: #a0a0a0; /* Gris más claro */
+    font-style: italic;
+    margin-bottom: 1.2rem;
+}
+
+.detalles-wod {
+    margin-top: 1.8rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1); /* Línea punteada sutil blanca */
+    padding-top: 1.8rem;
+}
+
+.etiqueta-detalle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #c0c0c0; /* Gris claro */
+    margin-bottom: 0.6rem;
+}
+
+.lista-ejercicios {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.8rem;
+}
+
+.lista-ejercicios li {
+    font-size: 1.05rem;
+    color: #d0d0d0; /* Gris muy claro para los ejercicios */
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 25px; /* Más espacio para el ícono/viñeta */
+}
+
+.lista-ejercicios li::before {
+    content: "🏋️‍♂️"; /* Ícono de pesista para los ejercicios, más profesional */
+    position: absolute;
+    left: 0;
+    color: #007bff; /* Color azul para el ícono */
+    font-size: 1.3rem; /* Tamaño del ícono */
+    top: -2px; /* Ajuste vertical del ícono */
+}
+
+.notas-wod,
+.duracion-wod,
+.equipo-wod {
+    font-size: 1rem;
+    color: #b0b0b0; /* Gris medio claro para las notas y detalles */
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.notas-wod {
+    font-style: italic;
+}
+
+/* Estilos del Botón de Información */
+.btn-info-wod {
+    display: inline-block;
+    background-color: #007bff; /* Azul de marca */
+    color: #ffffff;
+    padding: 12px 25px; /* Botón un poco más grande */
+    border-radius: 10px; /* Bordes más redondeados */
+    text-decoration: none;
+    font-weight: 700; /* Más negrita */
+    margin-top: 2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4); /* Sombra más fuerte para el botón */
+    cursor: pointer;
+}
+
+.btn-info-wod:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+    transform: translateY(-3px) scale(1.05); /* Efecto de "presionar" y crecer ligeramente */
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6);
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 1200px) {
+    .titulo-seccion {
+        font-size: 4rem;
+        margin-bottom: 3rem;
+    }
+    .contenedor-wod-semanal {
+        padding: 2rem;
+        gap: 2.5rem;
+    }
+    .tarjeta-wod {
+        width: 320px;
+        padding: 2.5rem;
+    }
+    .dia-tarjeta {
+        font-size: 2.5rem;
+    }
+    .titulo-wod {
+        font-size: 1.9rem;
+    }
+}
+
+@media (max-width: 992px) {
+    #seccionCrossFitGeneral {
+        padding: 4rem 0;
+    }
+    .titulo-seccion {
+        font-size: 3.5rem;
+        margin-bottom: 2.5rem;
+    }
+    .contenedor-wod-semanal {
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+    .tarjeta-wod {
+        width: 300px;
+        padding: 2.2rem;
+    }
+    .dia-tarjeta {
+        font-size: 2.2rem;
+    }
+    .titulo-wod {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .titulo-seccion {
+        font-size: 2.8rem;
+        letter-spacing: 2px;
+        margin-bottom: 2rem;
+    }
+    .contenedor-wod-semanal {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+    .tarjeta-wod {
+        width: 280px;
+        padding: 2rem;
+    }
+    .dia-tarjeta {
+        font-size: 2rem;
+    }
+    .titulo-wod {
+        font-size: 1.5rem;
+    }
+    .lista-ejercicios li::before {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo-seccion {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+    .contenedor-wod-semanal {
+        padding: 0.8rem;
+        gap: 1rem;
+    }
+    .tarjeta-wod {
+        width: 260px;
+        padding: 1.8rem;
+    }
+    .dia-tarjeta {
+        font-size: 1.8rem;
+    }
+    .titulo-wod {
+        font-size: 1.3rem;
+    }
+    .lista-ejercicios li {
+        padding-left: 20px;
+    }
+    .lista-ejercicios li::before {
+        font-size: 1rem;
+    }
+}
