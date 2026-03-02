@@ -95,7 +95,7 @@ El sistema utiliza PHPMailer para:
 
 * Notificaciones
 
-* Buscar los archivos donde se configure el envío de correo y completar:
+Buscar los archivos donde se configure el envío de correo y completar:
 
 * $mail->Host = 'smtp.tuservidor.com';
 
